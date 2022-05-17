@@ -8,4 +8,4 @@ export const setStainedGlass = createAction('user/stained_glass/set');
 export const setNumberPoints = createAction('user/number_points/set');
 
 export const setPrivilegeСhips = createAction('user/privilege_chips/set');
-export const useOffPrivilegeСhips = createAction('user/privilege_chips/use');
+export const usePrivilegeСhips = createAction('user/privilege_chips/use');
