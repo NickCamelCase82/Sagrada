@@ -1,7 +1,11 @@
-import React from 'react';
+import React from 'react'
+import samplePDF from '../../files/Sagrada-Rules.pdf';
 
 export default function Rules() {
   return (
-    <div>Rules</div>
-  );
+    <>
+      <object><embed src={samplePDF} width="100%" height="100%" /></object>
+    </>
+  )
 }
+
