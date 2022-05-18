@@ -1,5 +1,5 @@
 import React from 'react'
-import samplePDF from '../../files/sagrada-rules.pdf';
+import samplePDF from '../../files/Sagrada-Rules.pdf';
 
 export default function Rules() {
   return (
