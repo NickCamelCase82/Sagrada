@@ -9,16 +9,16 @@ const Main = () => {
       <div className={classes.mainImgDiv}>
         <img src={img} alt="sagrada-img" className={classes.mainImg} />
         <Link to="/rules" type="button" className={classes.mainRulesLink}>
-          Rules
+          Правила
         </Link>
         <Link to="/login" type="button" className={classes.mainLoginLink}>
-          Login
+          Вход
         </Link>
         <Link to="/register" type="button" className={classes.mainRegisterLink}>
-          Register
+          Регистрация
         </Link>
         <Link to="/game" type="button" className={classes.mainPlayLink}>
-          Play
+          Играть
         </Link>
       </div>
     </div>
