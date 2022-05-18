@@ -18,5 +18,6 @@ module.exports = {
       2,
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
     ],
+    'no-param-reassign': 0,
   },
 };
