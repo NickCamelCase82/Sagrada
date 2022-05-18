@@ -9,19 +9,13 @@ import './App.css';
 
 function App() {
   return (
-    <>
-      {/* <Main /> */}
-      {/* <Login />
-      <Registration />
-      <Game /> */}
-      <Routes>
-        <Route path="main" element={<Main />} />
-        <Route path="rules" element={<Rules />} />
-        <Route path="login" element={<Login />} />
-        <Route path="register" element={<Registration />} />
-        <Route path="game" element={<Game />} />
-      </Routes>
-    </>
+    <Routes>
+      <Route path="main" element={<Main />} />
+      <Route path="rules" element={<Rules />} />
+      <Route path="login" element={<Login />} />
+      <Route path="register" element={<Registration />} />
+      <Route path="game" element={<Game />} />
+    </Routes>
   );
 }
 
