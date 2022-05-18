@@ -8,10 +8,10 @@ export default function Main() {
     <div className={classes.mainPage}>
       <div className={classes.mainImgDiv}>
         <img src={img} alt="sagrada-img" className={classes.mainImg} />
-        <Link to="/rules" type="button" className={classes.mainRulesLink}>Rules</Link>
-        <Link to="/login" type="button" className={classes.mainLoginLink}>Login</Link>
-        <Link to="/register" type="button" className={classes.mainRegisterLink}>Register</Link>
-        <Link to="/game" type="button" className={classes.mainPlayLink}>Play</Link>
+        <Link to="/rules" type="button" className={classes.mainRulesLink}>Правила</Link>
+        <Link to="/login" type="button" className={classes.mainLoginLink}>Вход</Link>
+        <Link to="/register" type="button" className={classes.mainRegisterLink}>Регистрация</Link>
+        <Link to="/game" type="button" className={classes.mainPlayLink}>Играть</Link>
       </div>
     </div>
   );
