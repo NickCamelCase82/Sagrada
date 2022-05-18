@@ -6,6 +6,7 @@ import Game from './components/Game/Game';
 import Main from './components/Main/Main';
 import Rules from './components/GameRules/Rules';
 import './App.css';
+import ResetPassword from './components/ResetPassword/ResetPassword';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="rules" element={<Rules />} />
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Registration />} />
+      <Route path="reset-password" element={<ResetPassword />} />
       <Route path="game" element={<Game />} />
       <Route path="/" element={<Navigate to="/main" />} />
     </Routes>
