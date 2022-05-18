@@ -12,3 +12,7 @@ export const setCommonGoals = createAction('game/common_goals/set');
 export const deleteRemainingCubes = createAction('game/remaining_cubes/delete');
 // Заполнить игру инструментами
 export const setInstruments = createAction('game/instruments/set');
+// Положить нужное кол-во фишек привелегий на инструмент
+export const addPrivilegeСhipsOnInstruments = createAction(
+  'game/privilege_chips/add'
+);

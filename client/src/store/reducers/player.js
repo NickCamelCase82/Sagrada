@@ -18,8 +18,13 @@ const initialState = {
   //      [null, null, null, null, null],
   //    ]
   //   },
-  windowFrame: null,
-  stainedGlass: null,
+  windowFrame: {
+    color: null,
+  },
+  stainedGlass: {
+    complexity: null,
+    pattern: null,
+  },
   numberPoints: null,
   privilegeСhips: null,
 };
@@ -29,16 +34,16 @@ const player = createReducer(initialState, (builder) => {
   builder.addCase(actions.setLogin, (state, action) => {
     state.login = action.payload;
   });
-  // action принимает payload с объектом c ключами id и color
+  // action принимает payload с объектом c ключами id и color title text src
   builder.addCase(actions.setPersonalGoal, (state, action) => {
     state.personalGoal = action.payload;
   });
-  // action принимает payload с объектом c ключом color
+  // action принимает payload с объектом c ключом color src
   builder.addCase(actions.setWindowFrame, (state, action) => {
     state.windowFrame.color = action.payload;
   });
   // action принимает payload с объектом витража c ключами:
-  // complexity (номер сложности) и pattern в виде двумерного массива
+  // complexity (номер сложности), pattern в виде двумерного массива и src
   builder.addCase(actions.setStainedGlass, (state, action) => {
     const { pattern, complexity } = action.payload;
     state.stainedGlass.complexity = complexity;

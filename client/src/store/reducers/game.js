@@ -43,7 +43,7 @@ const game = createReducer(initialState, (builder) => {
       state.droppedСubes.push(cube);
     });
   });
-  // action принимает payload с массивом общих целей c ключами id и text
+  // action принимает payload с массивом общих целей c ключами id title text points src
   builder.addCase(actions.setCommonGoals, (state, action) => {
     action.payload.forEach((goal) => {
       state.commonGoals.push(goal);
@@ -54,10 +54,20 @@ const game = createReducer(initialState, (builder) => {
     state.droppedСubes = [];
   });
 
-  // action принимает payload с массивом инструментов с ключами id и text
+  // action принимает payload с массивом инструментов с ключами id
+  // amountPrivilegeСhips (количество фишек привелегий на инструменте, изначально null) text src
   builder.addCase(actions.setInstruments, (state, action) => {
     action.payload.forEach((instrument) => {
       state.instruments.push(instrument);
+    });
+  });
+  // action принимает payload с объектом id (id инструмента) и amount ()
+  builder.addCase(actions.addPrivilegeСhipsOnInstruments, (state, action) => {
+    const { id, amount } = action.payload;
+    state.instruments.forEach((instrument) => {
+      if (instrument.id === id) {
+        instrument.amountPrivilegeСhips += amount;
+      }
     });
   });
 });
