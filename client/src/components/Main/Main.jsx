@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import classes from './Main.module.css';
-import img from '../../images/Main.png';
+import img from '../../img/main-page/main.png';
 
 export default function Main() {
   return (
