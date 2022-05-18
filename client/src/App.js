@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
 import Game from './components/Game/Game';
@@ -15,6 +15,7 @@ function App() {
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Registration />} />
       <Route path="game" element={<Game />} />
+      <Route path="/" element={<Navigate to="/main" />} />
     </Routes>
   );
 }
