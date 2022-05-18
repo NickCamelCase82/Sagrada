@@ -19,5 +19,6 @@ module.exports = {
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
     ],
     'no-param-reassign': 0,
+    'arrow-body-style': true,
   },
 };
