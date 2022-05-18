@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default function Rules() {
-  return (
-    <div>Rules</div>
-  );
-}
+const Rules = () => {
+  return <div>Rules</div>;
+};
+
+export default Rules;

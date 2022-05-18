@@ -7,17 +7,15 @@ import Main from './components/Main/Main';
 import Rules from './components/GameRules/Rules';
 import './App.css';
 
-const App = () => {
-  return (
-    <Routes>
-      <Route path="main" element={<Main />} />
-      <Route path="rules" element={<Rules />} />
-      <Route path="login" element={<Login />} />
-      <Route path="register" element={<Registration />} />
-      <Route path="game" element={<Game />} />
-      <Route path="/" element={<Navigate to="/main" />} />
-    </Routes>
-  );
-};
+const App = () => (
+  <Routes>
+    <Route path="main" element={<Main />} />
+    <Route path="rules" element={<Rules />} />
+    <Route path="login" element={<Login />} />
+    <Route path="register" element={<Registration />} />
+    <Route path="game" element={<Game />} />
+    <Route path="/" element={<Navigate to="/main" />} />
+  </Routes>
+);
 
 export default App;
