@@ -34,6 +34,17 @@ import board2 from '../img/boards/2.png';
 import board3 from '../img/boards/3.png';
 import board4 from '../img/boards/4.png';
 
+import colorDiagonals from '../img/common-goals/ColorDiagonals.jpg';
+import colorVariety from '../img/common-goals/ColorVariety.jpg';
+import columnColorVariety from '../img/common-goals/ColumnColorVariety.jpg';
+import ColumnShadeVariety from '../img/common-goals/ColumnShadeVariety.jpg';
+import DeepShades from '../img/common-goals/DeepShades.jpg';
+import LightShades from '../img/common-goals/LightShades.jpg';
+import MediumShades from '../img/common-goals/MediumShades.jpg';
+import RowColorVariety from '../img/common-goals/RowColorVariety.jpg';
+import RowShadeVariety from '../img/common-goals/RowShadeVariety.jpg';
+import ShadeVariety from '../img/common-goals/ShadeVariety.jpg';
+
 export const CubeColors = {
   BLUE: 'blue',
   PURPLE: 'purple',
@@ -600,3 +611,80 @@ export const WindowFrame = [
     src: board1,
   },
 ];
+
+export const CommonGoals = [
+  {
+    id: 1,
+    title: 'Красочные диагонали',
+    text: 'Число кубиков одного цвета, соседних по диагонали',
+    points: '#',
+    src: colorDiagonals,
+  },
+  {
+    id: 2,
+    title: 'Многообразие красок',
+    text: 'Наборы из 1 кубика каждого цвета на всем витраже',
+    points: 4,
+    src: colorVariety,
+  },
+  {
+    id: 3,
+    title: 'Разноцветные колонки',
+    text: 'Колонки без повторяющихся цветов',
+    points: 5,
+    src: columnColorVariety,
+  },
+  {
+    id: 4,
+    title: 'Богатство оттенков в колонках',
+    text: 'Колонки без повторяющейся яркости',
+    points: 4,
+    src: ColumnShadeVariety,
+  },
+  {
+    id: 5,
+    title: 'Темные стекла',
+    text: 'Наборы из "5" и "6" на всем витраже',
+    points: 2,
+    src: DeepShades,
+  },
+  {
+    id: 6,
+    title: 'Светлые стекла',
+    text: 'Наборы из "1" и "2" на всем витраже',
+    points: 2,
+    src: LightShades,
+  },
+  {
+    id: 7,
+    title: 'Затемненные стекла',
+    text: 'Наборы из "3" и "4" на всем витраже',
+    points: 2,
+    src: MediumShades,
+  },
+  {
+    id: 8,
+    title: 'Разноцветные ряды',
+    text: 'Ряды без повторяющихся цветов',
+    points: 6,
+    src: RowColorVariety,
+  },
+  {
+    id: 9,
+    title: 'Богатство оттенков в рядах',
+    text: 'Ряды без повторяющейся яркости',
+    points: 5,
+    src: RowShadeVariety,
+  },
+  {
+    id: 10,
+    title: 'Многообразие оттенков',
+    text: 'Наборы из 1 кубика каждой яркости на всем витраже',
+    points: 5,
+    src: ShadeVariety,
+  },
+];
+
+// export const Cells = [
+
+// ]

@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
 import samplePDF from '../../files/Sagrada-Rules.pdf';
 
-export default function Rules() {
+const Rules = () => {
   return (
-    <>
-      <object><embed src={samplePDF} width="100%" height="100%" /></object>
-    </>
-  )
-}
+    <object>
+      <embed src={samplePDF} width="100%" height="100%" />
+    </object>
+  );
+};
 
+export default Rules;
