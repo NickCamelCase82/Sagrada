@@ -19,13 +19,13 @@ const Сarousel = ({ arrayCommonGoals }) => {
     //     return <CommonGoal card={card} key={card.id} />;
     //   })}
     // </Slider>
-    <div className='sliderDiv'>
-      <Slider {...settings}>
-        {arrayCommonGoals.map((card) => {
-          return <CommonGoal card={card} key={card.id} />;
-        })}
-      </Slider>
-    </div>
+    // <div className="sliderDiv">
+    <Slider {...settings}>
+      {arrayCommonGoals.map((card) => {
+        return <CommonGoal card={card} key={card.id} />;
+      })}
+    </Slider>
+    // </div>
   );
 };
 
