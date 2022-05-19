@@ -23,3 +23,9 @@ export const randomCommonGoals = (num, array) => {
 
   return arrayRandomCommonGoals;
 };
+
+export const randomPersonalGoal = (array) => {
+  const personalGoal = getRandomInt(0, array.length - 1);
+
+  return array[personalGoal];
+};
