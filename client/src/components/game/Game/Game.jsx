@@ -5,6 +5,7 @@ import Counter from '../Counter/Counter';
 // import Dice from '../Dice/Dice';
 import { Link } from 'react-router-dom';
 import ButtonCommonGoals from '../ButtonCommonGoals/ButtonCommonGoals';
+import ButtonPersonalGoal from '../ButtonPersonalGoal/ButtonPersonalGoal';
 
 const Game = () => {
   return (
@@ -15,6 +16,7 @@ const Game = () => {
           <Link to="/">На главную</Link>
           <Counter />
           <ButtonCommonGoals />
+          <ButtonPersonalGoal />
         </div>
       </div>
     </>
