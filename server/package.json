@@ -21,6 +21,11 @@
     "sequelize-cli": "^6.4.1"
   },
   "scripts": {
-    "dev": "nodemon app.js --ignore sessions"
+    "migrate": "npx sequelize-cli db:migrate",
+    "unmigrate": "npx sequelize-cli db:migrate:undo:all",
+    "seed": "npx sequelize-cli db:seed:all",
+    "unseed": "npx sequelize-cli db:seed:undo:all",
+    "dev": "nodemon app.js --ignore sessions",
+    "start": "nodemon app.js --ignore sessions"
   }
 }
