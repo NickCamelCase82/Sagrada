@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Modal from 'react-modal';
 import CommonGoalCards from '../CommonGoalCards/CommonGoalCards';
 import './ButtonCommonGoals.css';
+import { setCommonGoals } from '../../../store/actions/game';
+import { useDispatch, useSelector } from 'react-redux';
+import { randomCommonGoals } from '../../../features/gameFeatures';
+import { CommonGoals } from '../../../constans/constans';
 
 const customStyles = {
   content: {
@@ -19,6 +23,19 @@ const customStyles = {
 // Modal.setAppElement('#yourAppElement');
 
 const ButtonCommonGoals = () => {
+  const dispatch = useDispatch();
+  const stateCommonGoals = useSelector((state) => state.game.commonGoals);
+
+  useEffect(() => {
+    console.log('1');
+    if (stateCommonGoals.length === 0) {
+      console.log('2');
+      console.log('asdsadd');
+      const goals = randomCommonGoals(3, CommonGoals);
+      dispatch(setCommonGoals(goals));
+    }
+  }, []);
+
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -35,7 +52,6 @@ const ButtonCommonGoals = () => {
     setIsOpen(false);
   }
 
-  // return <button>Общие цели</button>;
   return (
     <div>
       <button className="btn-common-goals" onClick={openModal}>
