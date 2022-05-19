@@ -2,7 +2,6 @@ import React from 'react';
 import classes from './Game.module.css';
 // import img from '../../../img/background.png';
 import Counter from '../Counter/Counter';
-// import Dice from '../Dice/Dice';
 import { Link } from 'react-router-dom';
 import GoalAndToolButtons from '../GoalAndToolButtons/GoalAndToolButtons';
 // import ButtonCommonGoals from '../GoalAndToolButtons/ButtonCommonGoals/ButtonCommonGoals';

@@ -6,6 +6,7 @@ import Game from './components/game/Game/Game';
 import Main from './components/Main/Main';
 import Rules from './components/GameRules/Rules';
 import './App.css';
+import Players from './components/game/Players/Players';
 
 // import '~slick-carousel/slick/slick.css';
 // import '~slick-carousel/slick/slick-theme.css';
@@ -16,6 +17,7 @@ const App = () => (
     <Route path="rules" element={<Rules />} />
     <Route path="login" element={<Login />} />
     <Route path="register" element={<Registration />} />
+    <Route path="players" element={<Players />} />
     <Route path="game" element={<Game />} />
     <Route path="/" element={<Navigate to="/main" />} />
   </Routes>
