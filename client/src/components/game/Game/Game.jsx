@@ -12,10 +12,10 @@ const Game = () => {
       <div className={classes.gameImgDiv}>
         <img src={img} alt="sagrada-img" className={classes.gameImg} />
         <Counter />
-        
+        <CommonGoalCards />
       </div>
     </div>
-    <CommonGoalCards />
+ 
     </>
   );
 };
