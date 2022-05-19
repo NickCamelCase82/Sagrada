@@ -1,6 +1,6 @@
 import React from 'react';
 import './CommonGoalCards.css';
-import Сarousel from '../../Сarousel/Сarousel';
+import Сarousel from '../../../Сarousel/Сarousel';
 import { useSelector } from 'react-redux';
 
 const CommonGoalCards = () => {

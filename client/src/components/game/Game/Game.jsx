@@ -4,8 +4,9 @@ import classes from './Game.module.css';
 import Counter from '../Counter/Counter';
 // import Dice from '../Dice/Dice';
 import { Link } from 'react-router-dom';
-import ButtonCommonGoals from '../ButtonCommonGoals/ButtonCommonGoals';
-import ButtonPersonalGoal from '../ButtonPersonalGoal/ButtonPersonalGoal';
+import GoalAndToolButtons from '../GoalAndToolButtons/GoalAndToolButtons';
+// import ButtonCommonGoals from '../GoalAndToolButtons/ButtonCommonGoals/ButtonCommonGoals';
+// import ButtonPersonalGoal from '../GoalAndToolButtons/ButtonPersonalGoal/ButtonPersonalGoal';
 
 const Game = () => {
   return (
@@ -15,8 +16,9 @@ const Game = () => {
           {/* <img src={img} alt="sagrada-img" className={classes.gameImg} /> */}
           <Link to="/">На главную</Link>
           <Counter />
-          <ButtonCommonGoals />
-          <ButtonPersonalGoal />
+          {/* <ButtonCommonGoals />
+          <ButtonPersonalGoal /> */}
+          <GoalAndToolButtons />
         </div>
       </div>
     </>

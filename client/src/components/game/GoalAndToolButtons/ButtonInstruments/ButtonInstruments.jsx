@@ -1,11 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Modal from 'react-modal';
-import { useDispatch, useSelector } from 'react-redux';
-import { randomPersonalGoal } from '../../../features/gameFeatures';
-import { PersonalGoals } from '../../../constans/constans';
-import { setPersonalGoal } from '../../../store/actions/player';
-import './ButtonPersonalGoal.css';
-import PersonalGoal from '../PersonalGoal/PersonalGoal';
+import Instruments from '../Instruments/Instruments';
+import './ButtonInstruments.css';
 
 const customStyles = {
   content: {
@@ -20,15 +16,7 @@ const customStyles = {
   },
 };
 
-const ButtonPersonalGoal = () => {
-  const dispatch = useDispatch();
-  const statePersonalGoal = useSelector((state) => state.player.personalGoal);
-
-  useEffect(() => {
-    const goal = randomPersonalGoal(PersonalGoals);
-    dispatch(setPersonalGoal(goal));
-  }, []);
-
+const ButtonInstruments = () => {
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -47,8 +35,8 @@ const ButtonPersonalGoal = () => {
 
   return (
     <div>
-      <button className="btn-personal-goal" onClick={openModal}>
-        Личная цель
+      <button className="btn-instruments" onClick={openModal}>
+        Инструменты
       </button>
       <Modal
         isOpen={modalIsOpen}
@@ -59,15 +47,15 @@ const ButtonPersonalGoal = () => {
       >
         {/* <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2> */}
         <button
-          className="btn-personal-goal btn-personal-goal-close"
+          className="btn-instruments btn-instruments-close"
           onClick={closeModal}
         >
           Закрыть
         </button>
-        <PersonalGoal />
+        <Instruments />
       </Modal>
     </div>
   );
 };
 
-export default ButtonPersonalGoal;
+export default ButtonInstruments;
