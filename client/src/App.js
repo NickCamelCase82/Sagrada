@@ -7,6 +7,9 @@ import Main from './components/Main/Main';
 import Rules from './components/GameRules/Rules';
 import './App.css';
 
+// import '~slick-carousel/slick/slick.css';
+// import '~slick-carousel/slick/slick-theme.css';
+
 const App = () => (
   <Routes>
     <Route path="main" element={<Main />} />
