@@ -21,5 +21,8 @@ module.exports = {
     'no-param-reassign': 0,
     'arrow-body-style': 'off',
     'react/function-component-definition': 'off',
+    'operator-linebreak': 'off',
+    'no-unused-vars': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
 };

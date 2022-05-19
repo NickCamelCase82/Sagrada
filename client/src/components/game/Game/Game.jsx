@@ -1,7 +1,13 @@
 import React from 'react';
+import CommonGoalCards from '../CommonGoalCards/CommonGoalCards';
 
 const Game = () => {
-  return <div>Game</div>;
+  return (
+    <>
+      <p>Game</p>
+      <CommonGoalCards />
+    </>
+  );
 };
 
 export default Game;
