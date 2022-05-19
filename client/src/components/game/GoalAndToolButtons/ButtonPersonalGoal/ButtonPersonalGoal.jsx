@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import Modal from 'react-modal';
-import CommonGoalCards from '../CommonGoalCards/CommonGoalCards';
-import './ButtonCommonGoals.css';
-import { setCommonGoals } from '../../../store/actions/game';
 import { useDispatch, useSelector } from 'react-redux';
-import { randomCommonGoals } from '../../../features/gameFeatures';
-import { CommonGoals } from '../../../constans/constans';
+import { randomPersonalGoal } from '../../../../features/gameFeatures';
+import { PersonalGoals } from '../../../../constans/constans';
+import { setPersonalGoal } from '../../../../store/actions/player';
+import './ButtonPersonalGoal.css';
+import PersonalGoal from '../PersonalGoal/PersonalGoal';
 
 const customStyles = {
   content: {
@@ -20,20 +20,13 @@ const customStyles = {
   },
 };
 
-// Modal.setAppElement('#yourAppElement');
-
-const ButtonCommonGoals = () => {
+const ButtonPersonalGoal = () => {
   const dispatch = useDispatch();
-  const stateCommonGoals = useSelector((state) => state.game.commonGoals);
+  const statePersonalGoal = useSelector((state) => state.player.personalGoal);
 
   useEffect(() => {
-    console.log('1');
-    if (stateCommonGoals.length === 0) {
-      console.log('2');
-      console.log('asdsadd');
-      const goals = randomCommonGoals(3, CommonGoals);
-      dispatch(setCommonGoals(goals));
-    }
+    const goal = randomPersonalGoal(PersonalGoals);
+    dispatch(setPersonalGoal(goal));
   }, []);
 
   let subtitle;
@@ -54,8 +47,8 @@ const ButtonCommonGoals = () => {
 
   return (
     <div>
-      <button className="btn-common-goals" onClick={openModal}>
-        Общие цели
+      <button className="btn-personal-goal" onClick={openModal}>
+        Личная цель
       </button>
       <Modal
         isOpen={modalIsOpen}
@@ -66,15 +59,15 @@ const ButtonCommonGoals = () => {
       >
         {/* <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2> */}
         <button
-          className="btn-common-goals btn-common-goals-close"
+          className="btn-personal-goal btn-personal-goal-close"
           onClick={closeModal}
         >
           Закрыть
         </button>
-        <CommonGoalCards />
+        <PersonalGoal />
       </Modal>
     </div>
   );
 };
 
-export default ButtonCommonGoals;
+export default ButtonPersonalGoal;
