@@ -2,7 +2,7 @@ import React from 'react';
 import './Сarousel.css';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
-import CommonGoal from '../Game/CommonGoal/CommonGoal';
+import CommonGoal from '../game/CommonGoal/CommonGoal';
 
 const Сarousel = ({ arrayCommonGoals }) => {
   const settings = {
