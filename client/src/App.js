@@ -2,7 +2,7 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
-import Game from './components/game/Game/Game';
+import Game from './components/Game/Game/Game';
 import Main from './components/Main/Main';
 import Rules from './components/GameRules/Rules';
 import './App.css';
