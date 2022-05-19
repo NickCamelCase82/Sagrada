@@ -45,9 +45,7 @@ const game = createReducer(initialState, (builder) => {
   });
   // action принимает payload с массивом общих целей c ключами id title text points src
   builder.addCase(actions.setCommonGoals, (state, action) => {
-    action.payload.forEach((goal) => {
-      state.commonGoals.push(goal);
-    });
+    state.commonGoals = action.payload;
   });
   // меняет состояние выпавших кубов на пустой массив
   builder.addCase(actions.deleteRemainingCubes, (state) => {
