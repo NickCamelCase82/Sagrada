@@ -2,8 +2,6 @@ import React from 'react'
 import classes from './Dice.module.css';
 
 export default function Dice(props) {
-  // let propsColor = 'blue'
-  // let propsNumber = 'six'
   let color
   switch(props.color) {
     case 'blue':
@@ -24,16 +22,6 @@ export default function Dice(props) {
     default:
       color = 'black'
   }
-  // const CubeNumbers = {
-  //   ONE: 'one',
-  //   TWO: 'two',
-  //   THREE: 'three',
-  //   FOUR: 'four',
-  //   FIVE: 'five',
-  //   SIX: 'six',
-  // };
-
-
 
   switch(props.number) {
     case 'one':
@@ -120,61 +108,5 @@ export default function Dice(props) {
         </>
       )
   }
-  // return (
-  //   <>
-  //     <p>Кубик</p>
-  //     <div className={[classes.dice, classes.firstFace].join(' ')} style={{backgroundColor: color}} >
-  //       <span className={classes.dot}> </span>
-  //     </div>
 
-  //     <div className={[classes.dice, classes.secondFace].join(' ')} style={{backgroundColor: color}} >
-  //       <span className={classes.dot}> </span>
-  //       <span className={classes.dot}> </span>
-  //     </div>
-
-  //     <div className={[classes.dice, classes.thirdFace].join(' ')} style={{backgroundColor: color}} >
-  //       <span className={classes.dot}></span>
-  //       <span className={classes.dot}></span>
-  //       <span className={classes.dot}></span>
-  //     </div>
-
-  //     <div className={[classes.dice, classes.fourthFace].join(' ')} style={{backgroundColor: color}} >
-  //       <div className={classes.column}>
-  //         <span className={classes.dot}></span>
-  //         <span className={classes.dot}></span>
-  //       </div>
-  //       <div className={classes.column}>
-  //         <span className={classes.dot}></span>
-  //         <span className={classes.dot}></span>
-  //       </div>
-  //     </div>
-
-  //     <div className={[classes.dice, classes.fifthFace].join(' ')} style={{backgroundColor: color}} >
-  //       <div className={classes.column}>
-  //         <span className={classes.dot}></span>
-  //         <span className={classes.dot}></span>
-  //       </div>
-  //       <div className={classes.column}>
-  //         <span className={classes.dot}></span>
-  //       </div>
-  //       <div className={classes.column}>
-  //         <span className={classes.dot}></span>
-  //         <span className={classes.dot}></span>
-  //       </div>
-  //     </div>
-
-  //     <div className={[classes.dice, classes.sixthFace].join(' ')} style={{backgroundColor: color}} >
-  //       <div className={classes.column}>
-  //         <span className={classes.dot}></span>
-  //         <span className={classes.dot}></span>
-  //         <span className={classes.dot}></span>
-  //       </div>
-  //       <div className={classes.column}>
-  //         <span className={classes.dot}></span>
-  //         <span className={classes.dot}></span>
-  //         <span className={classes.dot}></span>
-  //       </div>
-  //     </div>
-  //   </>
-  // )
 }

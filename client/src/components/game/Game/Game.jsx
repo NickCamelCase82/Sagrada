@@ -7,6 +7,7 @@ import GoalAndToolButtons from '../GoalAndToolButtons/GoalAndToolButtons';
 // import ButtonCommonGoals from '../GoalAndToolButtons/ButtonCommonGoals/ButtonCommonGoals';
 // import ButtonPersonalGoal from '../GoalAndToolButtons/ButtonPersonalGoal/ButtonPersonalGoal';
 import ChoiceStainedGlass from '../playersZone/ChoiceStainedGlass/ChoiceStainedGlass';
+import RollDiceBtn from '../RollDiceBtn/RollDiceBtn';
 
 const Game = () => {
   return (
@@ -19,6 +20,7 @@ const Game = () => {
           {/* <ButtonCommonGoals />
           <ButtonPersonalGoal /> */}
           <GoalAndToolButtons />
+          <RollDiceBtn />
           <ChoiceStainedGlass />
         </div>
       </div>
