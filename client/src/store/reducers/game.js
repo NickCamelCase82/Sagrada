@@ -10,11 +10,11 @@ const initialState = {
     ],
   },
   cubes: [
-    { color: [CubeColors.BLUE], count: 18 },
-    { color: [CubeColors.GREEN], count: 18 },
-    { color: [CubeColors.PURPLE], count: 18 },
-    { color: [CubeColors.RED], count: 18 },
-    { color: [CubeColors.YELLOW], count: 18 },
+    { color: CubeColors.BLUE, count: 18 },
+    { color: CubeColors.GREEN, count: 18 },
+    { color: CubeColors.PURPLE, count: 18 },
+    { color: CubeColors.RED, count: 18 },
+    { color: CubeColors.YELLOW, count: 18 },
   ],
   commonGoals: [],
   // droppedСubes: [
@@ -31,11 +31,13 @@ const game = createReducer(initialState, (builder) => {
     state.round.cubes.push(action.payload);
   });
   // action принимает payload с массивом, элементы которого строка с названием цвета
-  builder.addCase(actions.useCubes, (state, action) => {
+  builder.addCase(actions.removeCubes, (state, action) => {
     action.payload.forEach((payloadCube) => {
       state.cubes.forEach((stateCube) => {
+        // console.log('stateCube', stateCube);
         if (stateCube.color === payloadCube) {
           stateCube.count -= 1;
+          
         }
       });
     });
