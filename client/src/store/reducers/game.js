@@ -1,5 +1,5 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { CubeColors /* CubeNumbers */ } from '../../constans/constans';
+import { CubeColors, CubeNumbers } from '../../constans/constans';
 import * as actions from '../actions/game';
 
 const initialState = {
@@ -16,7 +16,7 @@ const initialState = {
   ],
   commonGoals: [],
   droppedСubes: [
-    // { color: [CubeColors.BLUE], number: 6 }
+    // { color: [CubeColors.BLUE], number: CubeNumbers.SIX  }
   ],
   instruments: [],
 };
@@ -37,7 +37,7 @@ const game = createReducer(initialState, (builder) => {
       });
     });
   });
-  // action принимает payload с массивом объектов кубов с ключами color и number
+  // action принимает payload с массивом объектов кубов с ключами color и строку с номером
   builder.addCase(actions.setDroppedСubes, (state, action) => {
     action.payload.forEach((cube) => {
       state.droppedСubes.push(cube);

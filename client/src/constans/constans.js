@@ -110,6 +110,7 @@ export const StainedGlass = [
   {
     id: 1,
     pattern1: {
+      id: 'a',
       title: 'Калейдоскопический сон',
       complexity: 4,
       pattern: [
@@ -121,6 +122,7 @@ export const StainedGlass = [
       src: window1Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Стойкость',
       complexity: 5,
       pattern: [
@@ -141,6 +143,7 @@ export const StainedGlass = [
   {
     id: 2,
     pattern1: {
+      id: 'a',
       title: 'Цветова капель',
       complexity: 3,
       pattern: [
@@ -152,6 +155,7 @@ export const StainedGlass = [
       src: window2Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Всполохи света',
       complexity: 5,
       pattern: [
@@ -178,6 +182,7 @@ export const StainedGlass = [
   {
     id: 3,
     pattern1: {
+      id: 'a',
       title: 'Свет мира',
       complexity: 6,
       pattern: [
@@ -201,6 +206,7 @@ export const StainedGlass = [
       src: window3Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Свет звезды',
       complexity: 5,
       pattern: [
@@ -233,6 +239,7 @@ export const StainedGlass = [
   {
     id: 4,
     pattern1: {
+      id: 'a',
       title: 'Достоинство',
       complexity: 5,
       pattern: [
@@ -250,6 +257,7 @@ export const StainedGlass = [
       src: window4Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Живая вода',
       complexity: 6,
       pattern: [
@@ -276,6 +284,7 @@ export const StainedGlass = [
   {
     id: 5,
     pattern1: {
+      id: 'a',
       title: 'Солнечный кристалл',
       complexity: 3,
       pattern: [
@@ -287,6 +296,7 @@ export const StainedGlass = [
       src: window5Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Ловец теней',
       complexity: 5,
       pattern: [
@@ -307,6 +317,7 @@ export const StainedGlass = [
   {
     id: 6,
     pattern1: {
+      id: 'a',
       title: 'Величие рассвета',
       complexity: 5,
       pattern: [
@@ -324,6 +335,7 @@ export const StainedGlass = [
       src: window6Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Священная заря',
       complexity: 4,
       pattern: [
@@ -344,6 +356,7 @@ export const StainedGlass = [
   {
     id: 7,
     pattern1: {
+      id: 'a',
       title: 'Симфония света',
       complexity: 6,
       pattern: [
@@ -361,6 +374,7 @@ export const StainedGlass = [
       src: window7Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Доблесть',
       complexity: 5,
       pattern: [
@@ -381,6 +395,7 @@ export const StainedGlass = [
   {
     id: 8,
     pattern1: {
+      id: 'a',
       title: 'Пламя свечи',
       complexity: 5,
       pattern: [
@@ -404,6 +419,7 @@ export const StainedGlass = [
       src: window8Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Аура солнца',
       complexity: 6,
       pattern: [
@@ -430,6 +446,7 @@ export const StainedGlass = [
   {
     id: 9,
     pattern1: {
+      id: 'a',
       title: 'Батльо',
       complexity: 5,
       pattern: [
@@ -453,6 +470,7 @@ export const StainedGlass = [
       src: window9Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Бельесгуард',
       complexity: 3,
       pattern: [
@@ -467,6 +485,7 @@ export const StainedGlass = [
   {
     id: 10,
     pattern1: {
+      id: 'a',
       title: 'Небесное сияние',
       complexity: 5,
       pattern: [
@@ -490,6 +509,7 @@ export const StainedGlass = [
       src: window10Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Божественный свет',
       complexity: 3,
       pattern: [
@@ -510,6 +530,7 @@ export const StainedGlass = [
   {
     id: 11,
     pattern1: {
+      id: 'a',
       title: 'Благолепие цвета',
       complexity: 4,
       pattern: [
@@ -527,6 +548,7 @@ export const StainedGlass = [
       src: window11Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Учтивость',
       complexity: 5,
       pattern: [
@@ -547,6 +569,7 @@ export const StainedGlass = [
   {
     id: 12,
     pattern1: {
+      id: 'a',
       title: 'Путь света',
       complexity: 4,
       pattern: [
@@ -564,6 +587,7 @@ export const StainedGlass = [
       src: window12Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Усердие',
       complexity: 5,
       pattern: [
