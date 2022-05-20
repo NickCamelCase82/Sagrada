@@ -2,7 +2,7 @@
   /* display: flex;
   justify-content: center; */
   width: 54%;
-  margin: 20px auto;
+  margin: 0 auto;
 }
 
 .counterImg {
@@ -14,7 +14,21 @@
 
 .roundCubes {
   display: flex;
+  flex-wrap: wrap;
   /* justify-content: space-between; */
   width: 100%;
   margin: 0 8px
+}
+
+.dice {  
+  padding: 4px;  
+  /* background-color: rgb(237, 237, 57);   */
+  width: 44px;  
+  height: 44px;  
+  border-radius: 10%;
+  margin: 2px;
+  border: 2px black solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
