@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import GoalAndToolButtons from '../GoalAndToolButtons/GoalAndToolButtons';
 // import ButtonCommonGoals from '../GoalAndToolButtons/ButtonCommonGoals/ButtonCommonGoals';
 // import ButtonPersonalGoal from '../GoalAndToolButtons/ButtonPersonalGoal/ButtonPersonalGoal';
+import ChoiceStainedGlass from '../playersZone/ChoiceStainedGlass/ChoiceStainedGlass';
 
 const Game = () => {
   return (
@@ -18,6 +19,7 @@ const Game = () => {
           {/* <ButtonCommonGoals />
           <ButtonPersonalGoal /> */}
           <GoalAndToolButtons />
+          <ChoiceStainedGlass />
         </div>
       </div>
     </>

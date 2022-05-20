@@ -1,10 +1,10 @@
-const userRouter = require("express").Router();
-const bcrypt = require("bcrypt");
-const { User } = require("../db/models");
-const validateForm = require("../middleware/validateForm");
-const validateLogin = require("../middleware/validateLogin");
+const userRouter = require('express').Router();
+const bcrypt = require('bcrypt');
+const { User } = require('../db/models');
+const validateForm = require('../middleware/validateForm');
+const validateLogin = require('../middleware/validateLogin');
 
-userRouter.post("/register", validateForm, async (req, res) => {
+userRouter.post('/register', validateForm, async (req, res) => {
   try {
     const { login, email, password } = req.body;
     const user = await User.findOne({
@@ -12,7 +12,7 @@ userRouter.post("/register", validateForm, async (req, res) => {
     });
 
     if (user) {
-      res.status(400).send({ error: "Данный email уже существует" });
+      res.status(400).send({ error: 'Данный email уже существует' });
     } else {
       const newUser = await User.create({
         login,
@@ -29,7 +29,7 @@ userRouter.post("/register", validateForm, async (req, res) => {
   }
 });
 
-userRouter.post("/login", validateLogin, async (req, res) => {
+userRouter.post('/login', validateLogin, async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({
@@ -41,7 +41,7 @@ userRouter.post("/login", validateLogin, async (req, res) => {
       req.session.isAuthorized = user;
       res.json(user.id);
     } else {
-      res.status(404).send({ error: "Неправильный email и/или пароль" });
+      res.status(404).send({ error: 'Неправильный email и/или пароль' });
     }
   } catch (error) {
     console.log(error);
@@ -49,7 +49,7 @@ userRouter.post("/login", validateLogin, async (req, res) => {
   }
 });
 
-userRouter.get("/session", (req, res) => {
+userRouter.get('/session', (req, res) => {
   if (!req.session.user) {
     res.json({});
   } else {
@@ -60,9 +60,9 @@ userRouter.get("/session", (req, res) => {
   }
 });
 
-userRouter.get("/logout", (req, res) => {
+userRouter.get('/logout', (req, res) => {
   req.session.destroy();
-  res.clearCookie("MyCookie");
+  res.clearCookie('MyCookie');
   res.end();
 });
 
