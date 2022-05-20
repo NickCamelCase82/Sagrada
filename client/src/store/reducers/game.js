@@ -4,8 +4,10 @@ import * as actions from '../actions/game';
 
 const initialState = {
   round: {
-    number: 1,
-    cubes: [],
+    number: 2,
+    cubes: [
+      {color: 'blue', number: 'one'},
+    ],
   },
   cubes: [
     { color: CubeColors.BLUE, count: 18 },
@@ -15,9 +17,10 @@ const initialState = {
     { color: CubeColors.YELLOW, count: 18 },
   ],
   commonGoals: [],
-  droppedСubes: [
-    // { color: [CubeColors.BLUE], number: CubeNumbers.SIX  }
-  ],
+  // droppedСubes: [
+  //   // { color: [CubeColors.BLUE], number: CubeNumbers.SIX  }
+  // ],
+  droppedСubes: null,
   instruments: [],
   stainedGlass: [],
 };
@@ -40,9 +43,10 @@ const game = createReducer(initialState, (builder) => {
   });
   // action принимает payload с массивом объектов кубов с ключами color и строку с номером
   builder.addCase(actions.setDroppedСubes, (state, action) => {
-    action.payload.forEach((cube) => {
-      state.droppedСubes.push(cube);
-    });
+    // action.payload.forEach((cube) => {
+    //   state.droppedСubes.push(cube);
+    // });
+    state.droppedСubes = action.payload
   });
   // action принимает payload с массивом общих целей c ключами id title text points src
   builder.addCase(actions.setCommonGoals, (state, action) => {

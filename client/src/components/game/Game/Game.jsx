@@ -8,6 +8,7 @@ import GoalAndToolButtons from '../GoalAndToolButtons/GoalAndToolButtons';
 // import ButtonPersonalGoal from '../GoalAndToolButtons/ButtonPersonalGoal/ButtonPersonalGoal';
 import ChoiceStainedGlass from '../playersZone/ChoiceStainedGlass/ChoiceStainedGlass';
 import { useSelector } from 'react-redux';
+import RollDiceBtn from '../RollDiceBtn/RollDiceBtn';
 
 const Game = () => {
   const stateStainedGlass = useSelector((state) => state.player.stainedGlass);
@@ -21,6 +22,7 @@ const Game = () => {
           {/* <ButtonCommonGoals />
           <ButtonPersonalGoal /> */}
           <GoalAndToolButtons />
+          <RollDiceBtn />
           {!stateStainedGlass ? <ChoiceStainedGlass /> : ''}
         </div>
       </div>

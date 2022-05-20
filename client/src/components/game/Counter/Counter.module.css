@@ -15,9 +15,9 @@
 .roundCubes {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
+  justify-content: center;
   width: 100%;
-  margin: 0 8px
+  margin: 0 auto
 }
 
 .dice {  
