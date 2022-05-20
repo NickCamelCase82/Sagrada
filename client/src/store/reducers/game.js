@@ -4,8 +4,10 @@ import * as actions from '../actions/game';
 
 const initialState = {
   round: {
-    number: 1,
-    cubes: [],
+    number: 2,
+    cubes: [
+      {color: 'blue', number: 'one'},
+    ],
   },
   cubes: [
     { color: [CubeColors.BLUE], count: 18 },
