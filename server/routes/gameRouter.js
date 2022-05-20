@@ -28,6 +28,7 @@ const randomCards = (num, array) => {
 router.post('/stainedGlass', (req, res) => {
   const { numberUsers, array } = req.body;
   const count = numberUsers * 2;
+
   const arrayStainedGlass = randomCards(count, array);
   const firstPlayer = [arrayStainedGlass[0], arrayStainedGlass[1]];
   res.json(firstPlayer);

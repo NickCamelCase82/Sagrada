@@ -8,17 +8,18 @@ const initialState = {
     cubes: [],
   },
   cubes: [
-    { color: [CubeColors.BLUE], count: 18 },
-    { color: [CubeColors.GREEN], count: 18 },
-    { color: [CubeColors.PURPLE], count: 18 },
-    { color: [CubeColors.RED], count: 18 },
-    { color: [CubeColors.YELLOW], count: 18 },
+    { color: CubeColors.BLUE, count: 18 },
+    { color: CubeColors.GREEN, count: 18 },
+    { color: CubeColors.PURPLE, count: 18 },
+    { color: CubeColors.RED, count: 18 },
+    { color: CubeColors.YELLOW, count: 18 },
   ],
   commonGoals: [],
   droppedСubes: [
     // { color: [CubeColors.BLUE], number: CubeNumbers.SIX  }
   ],
   instruments: [],
+  stainedGlass: [],
 };
 
 const game = createReducer(initialState, (builder) => {
@@ -67,6 +68,10 @@ const game = createReducer(initialState, (builder) => {
         instrument.amountPrivilegeСhips += amount;
       }
     });
+  });
+  // action принимает payload с объектом витража
+  builder.addCase(actions.addStainedGlass, (state, action) => {
+    state.stainedGlass.push(action.payload);
   });
 });
 

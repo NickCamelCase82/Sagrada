@@ -27,6 +27,7 @@ const initialState = {
   // },
   numberPoints: null,
   privilegeСhips: null,
+  stainedGlassChoice: null,
 };
 
 const player = createReducer(initialState, (builder) => {
@@ -72,6 +73,10 @@ const player = createReducer(initialState, (builder) => {
     const x = action.payload[1];
     const y = action.payload[0];
     state.stainedGlass.pattern[y][x] = cube;
+  });
+  // action принимает payload с массивом двух витражей для выбора игрока
+  builder.addCase(actions.setstainedGlassForChoice, (state, action) => {
+    state.stainedGlassChoice = action.payload;
   });
 });
 

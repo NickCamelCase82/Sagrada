@@ -16,3 +16,6 @@ export const setInstruments = createAction('game/instruments/set');
 export const addPrivilegeСhipsOnInstruments = createAction(
   'game/privilege_chips/add'
 );
+
+// Добавить витраж в массив витражей игроков
+export const addStainedGlass = createAction('game/stained_glass/add');
