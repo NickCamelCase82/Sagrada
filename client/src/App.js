@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login/Login';
 import Registration from './components/Registration/Registration';
+import ResetPassword from './components/ResetPassword/ResetPassword'
 import Game from './components/game/Game/Game';
 import Main from './components/Main/Main';
 import Rules from './components/GameRules/Rules';
@@ -16,6 +17,7 @@ const App = () => (
     <Route path="main" element={<Main />} />
     <Route path="rules" element={<Rules />} />
     <Route path="login" element={<Login />} />
+    <Route path="reset-password" element={<ResetPassword />} />
     <Route path="register" element={<Registration />} />
     <Route path="players" element={<Players />} />
     <Route path="game" element={<Game />} />
