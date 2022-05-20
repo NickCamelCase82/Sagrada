@@ -1,7 +1,7 @@
 import React from 'react';
 import FormItem from '../FormItem/FormItem';
 
-export default function ResetPassword() {
+const ResetPassword = () => {
   return (
     <div>
       ResetPassword
@@ -16,3 +16,5 @@ export default function ResetPassword() {
     </div>
   );
 }
+
+export default ResetPassword;

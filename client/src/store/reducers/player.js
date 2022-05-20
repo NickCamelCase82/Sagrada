@@ -4,27 +4,27 @@ import * as actions from '../actions/player';
 
 const initialState = {
   login: null,
-  personalGoal: null, // 1 or 2 or 3 ...
-  // windowFrame: {
-  //   color: [CubeColors.BLUE],
+  personalGoal: null,
+  // personalGoal: {
+  //   id: null,
+  //   color: null,
+  //   title: null,
+  //   text: null,
+  //   src: null,
   // },
+  windowFrame: null,
+  // windowFrame: {
+  //   id: null,
+  //   src: null,
+  // },
+  stainedGlass: null,
   // stainedGlass: {
-  //     complexity: null,
-  //     pattern: [
-  //      [null, null, null, null, null],
-  //      [null, null, null, null, null],
-  //      [null, null, null, null, null],
-  //      [null, null, null, null, null],
-  //      [null, null, null, null, null],
-  //    ]
-  //   },
-  windowFrame: {
-    color: null,
-  },
-  stainedGlass: {
-    complexity: null,
-    pattern: null,
-  },
+  //   id: null,
+  //   title: null,
+  //   complexity: null,
+  //   pattern: [],
+  //   src: null,
+  // },
   numberPoints: null,
   privilegeСhips: null,
 };
@@ -38,16 +38,18 @@ const player = createReducer(initialState, (builder) => {
   builder.addCase(actions.setPersonalGoal, (state, action) => {
     state.personalGoal = action.payload;
   });
-  // action принимает payload с объектом c ключом color src
+  // action принимает payload с объектом c ключами id, color и src
   builder.addCase(actions.setWindowFrame, (state, action) => {
-    state.windowFrame.color = action.payload;
+    state.windowFrame = action.payload;
   });
   // action принимает payload с объектом витража c ключами:
-  // complexity (номер сложности), pattern в виде двумерного массива и src
+  // id
+  // title
+  // complexity (номер сложности),
+  // pattern в виде двумерного массива
+  // src с переменной в которой картинка
   builder.addCase(actions.setStainedGlass, (state, action) => {
-    const { pattern, complexity } = action.payload;
-    state.stainedGlass.complexity = complexity;
-    state.stainedGlass.pattern = pattern;
+    state.stainedGlass = action.payload;
   });
   // action принимает payload с количеством заработанных очков
   builder.addCase(actions.setNumberPoints, (state, action) => {

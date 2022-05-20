@@ -6,7 +6,7 @@ import Button from '../UI/button/Button';
 import Input from '../UI/input/Input';
 import classes from './FormItem.module.css';
 
-function FormItem(props) {
+const FormItem = (props) => {
   const { register, handleSubmit, formState: { errors } } = useForm({
     mode: 'onBlur',
   });

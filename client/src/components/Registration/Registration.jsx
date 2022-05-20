@@ -1,7 +1,7 @@
 import React from 'react';
 import FormItem from '../FormItem/FormItem';
 
-export default function Registration() {
+const Registration = () => {
   return (
     <div>
       Registration
@@ -16,3 +16,5 @@ export default function Registration() {
     </div>
   );
 }
+
+export default Registration;
