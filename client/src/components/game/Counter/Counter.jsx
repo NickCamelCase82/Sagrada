@@ -25,11 +25,12 @@ const Counter = () => {
     <>
       <div className={classes.containerRoundCounter}>
         {/* <img src={img} alt="sagrada-img" className={classes.counterImg} /> */}
-        <div className={classes.roundCubes}>
+        
+      </div>
+      <div className={classes.roundCubes}>
           {counterCells}
           
         </div>
-      </div>
       
     </>
   );
