@@ -8,6 +8,8 @@ export const removeCubes = createAction('game/cubes/remove');
 export const setActivePlayer = createAction('game/active_player/set');
 // Добавить кубы, которые выпали в игровую зону
 export const setDroppedСubes = createAction('game/dropped_cubes/set');
+// Удалить из резерва тот кубик, который взяли
+export const removeDroppedСube = createAction('game/dropped_cube/remove');
 // Заполнить игру общими целями
 export const setCommonGoals = createAction('game/common_goals/set');
 // Удалить оставшиеся выпавшие кубы из игры (после добавлления куба на счетчик раундов)
