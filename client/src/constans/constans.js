@@ -45,12 +45,12 @@ import rowColorVariety from '../img/common-goals/RowColorVariety.jpg';
 import rowShadeVariety from '../img/common-goals/RowShadeVariety.jpg';
 import shadeVariety from '../img/common-goals/ShadeVariety.jpg';
 
-import cellOne from '../img/cells/1@4x.png';
-import cellTwo from '../img/cells/2@4x.png';
-import cellThree from '../img/cells/3@4x.png';
-import cellFour from '../img/cells/4@4x.png';
-import cellFive from '../img/cells/5@4x.png';
-import cellSix from '../img/cells/6@4x.png';
+import cellOne from '../img/cells/1.jpg';
+import cellTwo from '../img/cells/2.jpg';
+import cellThree from '../img/cells/3.jpg';
+import cellFour from '../img/cells/4.jpg';
+import cellFive from '../img/cells/5.jpg';
+import cellSix from '../img/cells/6.jpg';
 import cellBlue from '../img/cells/blue.jpg';
 import cellGreen from '../img/cells/green.jpg';
 import cellPurple from '../img/cells/purple.jpg';

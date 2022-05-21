@@ -34,4 +34,13 @@ router.post('/stainedGlass', (req, res) => {
   res.json(firstPlayer);
 });
 
+router.post('/cube/put', (req, res) => {
+  const { row, orderCell, raisedCube, activePlayer } = req.body;
+
+  console.log(row, orderCell, raisedCube, activePlayer);
+  const player = activePlayer === 'liza' ? 'dima' : 'liza';
+
+  res.json(player);
+});
+
 module.exports = router;

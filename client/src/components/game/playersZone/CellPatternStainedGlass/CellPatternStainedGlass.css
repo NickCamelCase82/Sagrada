@@ -1,0 +1,25 @@
+.container-cell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid black;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+.container-cell img {
+  width: 100%;
+  height: 100%;
+}
+
+.dice-in-cell {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(44, 44, 44);
+}
+

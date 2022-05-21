@@ -25,6 +25,11 @@ export const setstainedGlassForChoice = createAction(
   'user/stained_glass_for_choice/set'
 );
 
+// установить поднятый кубик
+export const setRaisedCube = createAction('user/raised_cube/set');
+// удалить поднятый кубик
+export const resetRaisedCube = createAction('user/raised_cube/reset');
+
 // экшен берет с бэка два объекта витража на выбор и диспачит в state
 export const setstainedGlassForChoiceThunk =
   (numberUsers, array) => async (dispatch) => {

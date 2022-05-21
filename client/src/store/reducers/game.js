@@ -24,10 +24,8 @@ const initialState = {
     { color: CubeColors.RED, count: 18 },
     { color: CubeColors.YELLOW, count: 18 },
   ],
+  activePlayer: 'liza',
   commonGoals: [],
-  // droppedСubes: [
-  //   // { color: [CubeColors.BLUE], number: CubeNumbers.SIX  }
-  // ],
   droppedСubes: null,
   instruments: [],
   stainedGlass: [],
@@ -46,10 +44,13 @@ const game = createReducer(initialState, (builder) => {
         // console.log('stateCube', stateCube);
         if (stateCube.color === payloadCube) {
           stateCube.count -= 1;
-          
         }
       });
     });
+  });
+  // action принимает payload со строкой логина игрока
+  builder.addCase(actions.setActivePlayer, (state, action) => {
+    state.activePlayer = action.payload;
   });
   // action принимает payload с массивом объектов кубов с ключами color и строку с номером
   builder.addCase(actions.setDroppedСubes, (state, action) => {
