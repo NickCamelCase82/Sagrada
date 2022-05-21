@@ -40,11 +40,13 @@ const game = createReducer(initialState, (builder) => {
     state.round.cubes.push(action.payload);
   });
   // action принимает payload с массивом, элементы которого строка с названием цвета
-  builder.addCase(actions.useCubes, (state, action) => {
+  builder.addCase(actions.removeCubes, (state, action) => {
     action.payload.forEach((payloadCube) => {
       state.cubes.forEach((stateCube) => {
+        // console.log('stateCube', stateCube);
         if (stateCube.color === payloadCube) {
           stateCube.count -= 1;
+          
         }
       });
     });
