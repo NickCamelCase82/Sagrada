@@ -16,7 +16,7 @@ const initialState = {
     [null, null, null, null, null],
     [null, null, null, null, null],
   ],
-  raisedCube: { color: 'red', number: 'six' },
+  raisedCube: null,
 };
 
 const player = createReducer(initialState, (builder) => {

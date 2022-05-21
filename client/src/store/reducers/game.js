@@ -88,6 +88,16 @@ const game = createReducer(initialState, (builder) => {
   builder.addCase(actions.addStainedGlass, (state, action) => {
     state.stainedGlass.push(action.payload);
   });
+  // action принимает payload с объектом куба, который надо удалить из резерва
+  builder.addCase(actions.removeDroppedСube, (state, action) => {
+    console.log('tyt', action.payload);
+    state.droppedСubes = state.droppedСubes.filter((cube) => {
+      return (
+        cube.color !== action.payload.color ||
+        cube.number !== action.payload.number
+      );
+    });
+  });
 });
 
 export default game;

@@ -2,8 +2,11 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   width: 100%;
-  margin: 0 auto
+  height: 60px;
+  margin: 10px;
+  border: 1px solid black;
 }
 
 .diceBtnDiv{
@@ -30,6 +33,10 @@
 .diceBtn:active {
   transition: none;
   font-weight: 700;
+}
+
+.containerReserveCube {
+  margin: 3px;
 }
 
 
