@@ -4,6 +4,8 @@ import { createAction } from '@reduxjs/toolkit';
 export const upRound = createAction('game/round/up');
 // Удалить из общего запаса кубов те кубики, которые выпали в раунд
 export const removeCubes = createAction('game/cubes/remove');
+// Установить активного игрока
+export const setActivePlayer = createAction('game/active_player/set');
 // Добавить кубы, которые выпали в игровую зону
 export const setDroppedСubes = createAction('game/dropped_cubes/set');
 // Заполнить игру общими целями
@@ -16,3 +18,6 @@ export const setInstruments = createAction('game/instruments/set');
 export const addPrivilegeСhipsOnInstruments = createAction(
   'game/privilege_chips/add'
 );
+
+// Добавить витраж в массив витражей игроков
+export const addStainedGlass = createAction('game/stained_glass/add');

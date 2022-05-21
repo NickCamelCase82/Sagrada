@@ -9,6 +9,13 @@
   font-size: 30px;
 } */
 
+.gamePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 /* .gameImgDiv {
   position: relative;
 } */

@@ -37,13 +37,25 @@ import board4 from '../img/boards/4.png';
 import colorDiagonals from '../img/common-goals/ColorDiagonals.jpg';
 import colorVariety from '../img/common-goals/ColorVariety.jpg';
 import columnColorVariety from '../img/common-goals/ColumnColorVariety.jpg';
-import ColumnShadeVariety from '../img/common-goals/ColumnShadeVariety.jpg';
-import DeepShades from '../img/common-goals/DeepShades.jpg';
-import LightShades from '../img/common-goals/LightShades.jpg';
-import MediumShades from '../img/common-goals/MediumShades.jpg';
-import RowColorVariety from '../img/common-goals/RowColorVariety.jpg';
-import RowShadeVariety from '../img/common-goals/RowShadeVariety.jpg';
-import ShadeVariety from '../img/common-goals/ShadeVariety.jpg';
+import columnShadeVariety from '../img/common-goals/ColumnShadeVariety.jpg';
+import deepShades from '../img/common-goals/DeepShades.jpg';
+import lightShades from '../img/common-goals/LightShades.jpg';
+import mediumShades from '../img/common-goals/MediumShades.jpg';
+import rowColorVariety from '../img/common-goals/RowColorVariety.jpg';
+import rowShadeVariety from '../img/common-goals/RowShadeVariety.jpg';
+import shadeVariety from '../img/common-goals/ShadeVariety.jpg';
+
+import cellOne from '../img/cells/1.jpg';
+import cellTwo from '../img/cells/2.jpg';
+import cellThree from '../img/cells/3.jpg';
+import cellFour from '../img/cells/4.jpg';
+import cellFive from '../img/cells/5.jpg';
+import cellSix from '../img/cells/6.jpg';
+import cellBlue from '../img/cells/blue.jpg';
+import cellGreen from '../img/cells/green.jpg';
+import cellPurple from '../img/cells/purple.jpg';
+import cellRed from '../img/cells/red.jpg';
+import cellYellow from '../img/cells/yellow.jpg';
 
 export const CubeColors = {
   BLUE: 'blue',
@@ -663,52 +675,62 @@ export const CommonGoals = [
     title: 'Богатство оттенков в колонках',
     text: 'Колонки без повторяющейся яркости',
     points: 4,
-    src: ColumnShadeVariety,
+    src: columnShadeVariety,
   },
   {
     id: 5,
     title: 'Темные стекла',
     text: 'Наборы из "5" и "6" на всем витраже',
     points: 2,
-    src: DeepShades,
+    src: deepShades,
   },
   {
     id: 6,
     title: 'Светлые стекла',
     text: 'Наборы из "1" и "2" на всем витраже',
     points: 2,
-    src: LightShades,
+    src: lightShades,
   },
   {
     id: 7,
     title: 'Затемненные стекла',
     text: 'Наборы из "3" и "4" на всем витраже',
     points: 2,
-    src: MediumShades,
+    src: mediumShades,
   },
   {
     id: 8,
     title: 'Разноцветные ряды',
     text: 'Ряды без повторяющихся цветов',
     points: 6,
-    src: RowColorVariety,
+    src: rowColorVariety,
   },
   {
     id: 9,
     title: 'Богатство оттенков в рядах',
     text: 'Ряды без повторяющейся яркости',
     points: 5,
-    src: RowShadeVariety,
+    src: rowShadeVariety,
   },
   {
     id: 10,
     title: 'Многообразие оттенков',
     text: 'Наборы из 1 кубика каждой яркости на всем витраже',
     points: 5,
-    src: ShadeVariety,
+    src: shadeVariety,
   },
 ];
 
-// export const Cells = [
-
-// ]
+export const Cells = {
+  [CubeNumbers.ONE]: cellOne,
+  [CubeNumbers.TWO]: cellTwo,
+  [CubeNumbers.THREE]: cellThree,
+  [CubeNumbers.FOUR]: cellFour,
+  [CubeNumbers.FIVE]: cellFive,
+  [CubeNumbers.SIX]: cellSix,
+  [CubeColors.BLUE]: cellBlue,
+  [CubeColors.GREEN]: cellGreen,
+  [CubeColors.PURPLE]: cellPurple,
+  [CubeColors.RED]: cellRed,
+  [CubeColors.YELLOW]: cellYellow,
+};

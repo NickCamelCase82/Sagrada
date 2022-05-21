@@ -4,6 +4,7 @@
   /* height: 100%; */
   /* background-color: aqua; */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -29,19 +30,33 @@
   border-radius: 3px;
 }
 
-.front {
-  background-color: #fff;
-}
-
 .back {
-  background-color: darkcyan;
+  /* background-color: darkcyan; */
   transform: rotateY(180deg);
 }
 
-.card:hover .front {
+.card.flipped .front {
+  transform: rotateY(180deg);
+}
+
+.card.flipped .back {
+  transform: rotateY(360deg);
+}
+
+/* .card:hover .front {
   transform: rotateY(180deg);
 }
 
 .card:hover .back {
   transform: rotateY(360deg);
+} */
+
+.back img {
+  width: 200px;
+  height: auto;
+}
+
+.front img {
+  width: 200px;
+  height: auto;
 }

@@ -1,0 +1,12 @@
+.container-pattern-stained-glass {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30px
+}
+
+.container-pattern-stained-glass-title {
+  margin-top: 5px;
+  font-weight: 600;
+}
