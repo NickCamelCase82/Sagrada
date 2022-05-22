@@ -1,5 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { Link } from 'react-router-dom';
+import Game from '../Game/Game';
 import classes from './Players.module.css';
 
 export default function Players() {
@@ -12,15 +13,24 @@ export default function Players() {
         <p>имя пользователя</p>
       </div>
       <ol className={classes.rounded}>
-        <li><p>Лиза</p></li>
-        <li><p>Маша</p></li>
-        <li><p>Коля</p></li>
-        <li><p>Олег</p></li>
+        <li>
+          <p>Лиза</p>
+        </li>
+        <li>
+          <p>Маша</p>
+        </li>
+        <li>
+          <p>Коля</p>
+        </li>
+        <li>
+          <p>Олег</p>
+        </li>
       </ol>
       <div className={classes.btnDiv}>
-        <button className={classes.btn}>Начать</button>
+        <button className={classes.btn}>
+          <Link to="/game">Начать игру</Link>
+        </button>
       </div>
     </>
-  )
+  );
 }
-
