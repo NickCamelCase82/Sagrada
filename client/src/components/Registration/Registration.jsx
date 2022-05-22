@@ -7,9 +7,8 @@ const Registration = () => {
       Registration
       <FormItem
         title="Регистрация"
-        input={{ email: 'Email', password: 'Пароль' }}
+        input={{ email: 'email', password: 'Пароль' }}
         button={{ submit: 'Зарегистрироваться', redirect: 'Войти' }}
-        infoText="Регистрируясь на сайте, вы соглашаетесь с нашими Правилами и Политикой конфиденциальности и соглашаетесь на информационную рассылку."
         link="/login"
         formType="registration"
       />

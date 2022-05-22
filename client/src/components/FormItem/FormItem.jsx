@@ -37,7 +37,6 @@ const FormItem = (props) => {
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <h1>{props.title}</h1>
-        {props.infoTextAdditional ? <p className={classes.infoText}>{props.infoTextAdditional}</p> : ''}
         <Input
           {...emailRegister}
           id="email"
@@ -64,17 +63,6 @@ const FormItem = (props) => {
               {errors?.password && <p className={classes.errorMessage}>{errors?.password?.message}</p>}
             </div>
           )}
-
-        {props.formType === 'login' ? (
-          <Link to="/reset-password" style={{ textDecoration: 'none', textAlign: 'right' }}>
-            <p className={classes.infoText}>{props.infoText}</p>
-          </Link>
-        )
-          : ''}
-
-        {props.formType !== 'login'
-          ? <p className={classes.infoText}>{props.infoText}</p>
-          : ''}
 
         <Button type="submit" color="yellow">{props.button.submit}</Button>
 
