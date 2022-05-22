@@ -1,4 +1,6 @@
 const express = require('express');
+const { createServer } = require('http');
+const { Server } = require('socket.io');
 const morgan = require('morgan');
 
 const path = require('path');
@@ -11,14 +13,21 @@ const dbCheck = require('./db/dbConnectionCheck');
 const userRouter = require('./routes/userRouter');
 const gameRouter = require('./routes/gameRouter');
 
-const app = express();
-
-const PORT = process.env.PORT ?? 3002;
-
 const corsConfig = {
   // Домены которым разрешен доступ к файлам
   origin: ['http://localhost:3000'],
 };
+
+const app = express();
+const httpServer = createServer(app);
+const io = new Server(httpServer, { cors: corsConfig });
+
+const PORT = process.env.PORT ?? 3002;
+
+// app.get('/test', (req, res) => {
+//   io.emit('333_play_liza', { test: 'lkflkd' });
+//   res.send({ test: 'lkflkd' });
+// });
 
 app.use(cors(corsConfig));
 app.use(morgan('dev'));
@@ -45,6 +54,6 @@ app.use('/game', gameRouter);
 
 dbCheck();
 
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log(`Server is up and running on PORT: ${PORT}`);
 });

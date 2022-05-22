@@ -115,8 +115,6 @@ export default function RollDiceBtn() {
       return false;
     }
 
-    console.log('======================', raisedСube);
-
     dispatch(setRaisedCube(cube));
     if (!raisedСube) {
       dispatch(removeDroppedСube(cube));
