@@ -46,7 +46,7 @@ class Rounds {
     }
   }
 
-  addGame(gameId) {
+  addGame(gameId, users) {
     this.gameRounds[gameId] = {
       cubes: [
         { color: 'blue', count: 18 },
@@ -57,6 +57,9 @@ class Rounds {
       ],
       rounds: [],
       reserve: null,
+      users,
+      activePlayer: null,
+      playersQueue: null,
     };
   }
 
