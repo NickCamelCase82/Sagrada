@@ -91,12 +91,22 @@ const game = createReducer(initialState, (builder) => {
   // action принимает payload с объектом куба, который надо удалить из резерва
   builder.addCase(actions.removeDroppedСube, (state, action) => {
     console.log('tyt', action.payload);
-    state.droppedСubes = state.droppedСubes.filter((cube) => {
-      return (
-        cube.color !== action.payload.color ||
-        cube.number !== action.payload.number
-      );
-    });
+    const { color, number } = action.payload;
+
+    const needIndex = state.droppedСubes.findIndex(
+      (cube) => cube.color === color && cube.number === number
+    );
+
+    const restedCubes = state.droppedСubes.filter(
+      (_, index) => index !== needIndex
+    );
+    // const oneCube = state.droppedСubes.filter((cube) => {
+    //   return (
+    //     cube.color !== action.payload.color &&
+    //     cube.number !== action.payload.number
+    //   );
+    // });
+    state.droppedСubes = restedCubes;
   });
 });
 
