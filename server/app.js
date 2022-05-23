@@ -49,11 +49,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', userRouter);
 
 dbCheck();
-
-app.listen(PORT, () => {
-  app.use(session(sessionConfig));
-});
-
+``;
 app.use('/', userRouter);
 app.use('/game', gameRouter);
 
