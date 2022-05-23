@@ -1,11 +1,21 @@
 class Lobby {
   lobby = {};
 
-  addGame(gameId, creator) {
-    this.lobby[gameId] = {
+  addGame(creator, gameId) {
+    console.log(this.lobby);
+    const lobbyGameid =
+      gameId || Math.max(0, ...Object.keys(this.lobby).map(Number)) + 1;
+    console.log(lobbyGameid);
+    this.lobby[lobbyGameid] = {
       players: [creator],
       creator,
+      id: lobbyGameid,
     };
+    return this.lobby[lobbyGameid];
+  }
+
+  getLobby(gameId) {
+    return this.lobby[gameId];
   }
 
   getPlayers(gameId) {
@@ -22,10 +32,18 @@ class Lobby {
     return null;
   }
 
-  addPlayers(gameId, player) {
+  addPlayer(gameId, player) {
     if (this.lobby[gameId]) {
-      this.lobby[gameId].players.push(player);
+      const isPlayerHave = this.lobby[gameId].players.find(
+        ({ id }) => id === player.id
+      );
+      if (!isPlayerHave) {
+        this.lobby[gameId].players.push(player);
+        return true;
+      }
+      return false;
     }
+    return false;
   }
 
   deletePlayer(gameId, id) {
@@ -44,13 +62,13 @@ class Lobby {
 
 const lobby = new Lobby();
 
-console.log(lobby.addGame(2, { id: 1, login: 'Бог' }));
-console.log(lobby.getPlayers(2));
-console.log(lobby.getCreator(2));
-console.log(lobby.addPlayers(2, { id: 2, login: 'Вася' }));
-console.log(lobby.addPlayers(2, { id: 3, login: 'Гена' }));
-console.log(lobby.getPlayers(2));
-console.log(lobby.deletePlayer(2, 3));
-console.log(lobby.getPlayers(2));
+// console.log(lobby.addGame({ id: 1, login: 'Бог' }));
+// console.log(lobby.getPlayers(1));
+// console.log(lobby.getCreator(1));
+// console.log(lobby.addPlayer(1, { id: 2, login: 'Вася' }));
+// console.log(lobby.addPlayer(1, { id: 3, login: 'Гена' }));
+// console.log(lobby.getPlayers(1));
+// console.log(lobby.deletePlayer(1, 3));
+// console.log(lobby.getPlayers(1));
 
-module.exports = Lobby;
+module.exports = lobby;

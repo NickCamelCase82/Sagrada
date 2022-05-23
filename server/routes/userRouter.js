@@ -46,12 +46,13 @@ userRouter.post('/login', validateLogin, async (req, res) => {
 
     if (user && (await bcrypt.compare(password, user.password))) {
       req.session.user = {
-        userId: user.Id,
+        userId: user.id,
         userEmail: user.email,
         userPassword: user.password,
         userLogin: user.login,
       };
       res.json(req.session.user);
+      console.log(req.session.user);
     } else {
       res.status(404).send({ error: 'Неправильный email и/или пароль' });
     }
@@ -62,11 +63,13 @@ userRouter.post('/login', validateLogin, async (req, res) => {
 });
 
 userRouter.get('/session', (req, res) => {
+  console.log(req.session.user);
   if (!req.session.user) {
     res.json({});
   } else {
     const user = {
-      id: req.session.user.id,
+      id: req.session.user.userId,
+      login: req.session.user.userLogin,
     };
     res.json(user);
   }

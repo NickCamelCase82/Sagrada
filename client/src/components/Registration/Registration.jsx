@@ -26,7 +26,7 @@ export default function Registration() {
   const registrationHandler = async (e) => {
     e.preventDefault();
 
-    const toBack = await fetch('http://localhost:3002/register', {
+    const toBack = await fetch('http://localhost:3001/register', {
       method: 'POST',
       credentials: 'include',
       headers: {

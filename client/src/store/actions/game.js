@@ -23,3 +23,5 @@ export const addPrivilegeСhipsOnInstruments = createAction(
 
 // Добавить витраж в массив витражей игроков
 export const addStainedGlass = createAction('game/stained_glass/add');
+// Добавить информацию о всех игроков
+export const setPlayers = createAction('game/players/set');

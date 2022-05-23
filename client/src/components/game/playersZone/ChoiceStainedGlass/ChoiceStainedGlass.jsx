@@ -7,27 +7,30 @@ import { setstainedGlassForChoiceThunk } from '../../../../store/actions/player'
 
 const ChoiceStainedGlass = () => {
   const dispatch = useDispatch();
-  const stainedGlassWindows = useSelector(
+  const stainedGlassChoice = useSelector(
     (state) => state.player.stainedGlassChoice
   );
-  console.log('lalal ', stainedGlassWindows);
+  // console.log('lalal ', stainedGlassWindows);
 
-  useEffect(() => {
-    dispatch(setstainedGlassForChoiceThunk(1, StainedGlass));
-  }, []);
+  // useEffect(() => {
+  // dispatch(setstainedGlassForChoiceThunk(1, StainedGlass));
+  // }, []);
 
-  if (!stainedGlassWindows?.length) {
+  if (!stainedGlassChoice?.length) {
     return null;
   }
-  console.log('123');
+
+  const patterns = StainedGlass.filter(({ id }) =>
+    stainedGlassChoice.includes(id)
+  );
 
   return (
     <div className="container-choice-stained-glass">
       <div>
-        <StainedGlassflip stainedGlass={stainedGlassWindows[0]} />
+        <StainedGlassflip stainedGlass={patterns[0]} />
       </div>
       <div>
-        <StainedGlassflip stainedGlass={stainedGlassWindows[1]} />
+        <StainedGlassflip stainedGlass={patterns[1]} />
       </div>
     </div>
   );

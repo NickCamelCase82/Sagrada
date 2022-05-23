@@ -17,6 +17,7 @@ const initialState = {
       { color: 'blue', number: 'one' },
     ],
   },
+  players: null,
   cubes: [
     { color: CubeColors.BLUE, count: 18 },
     { color: CubeColors.GREEN, count: 18 },
@@ -107,6 +108,9 @@ const game = createReducer(initialState, (builder) => {
     //   );
     // });
     state.droppedСubes = restedCubes;
+  });
+  builder.addCase(actions.setPlayers, (state, action) => {
+    state.players = action.payload;
   });
 });
 
