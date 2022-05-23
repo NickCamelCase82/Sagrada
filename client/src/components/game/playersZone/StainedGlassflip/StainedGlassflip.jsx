@@ -7,7 +7,7 @@ import { addStainedGlass } from '../../../../store/actions/game';
 
 const StainedGlassflip = ({ stainedGlass }) => {
   const dispatch = useDispatch();
-  console.log(stainedGlass);
+  // console.log(stainedGlass);
   const [side, setSide] = useState(true);
 
   const handleTakeStainedGlass = () => {

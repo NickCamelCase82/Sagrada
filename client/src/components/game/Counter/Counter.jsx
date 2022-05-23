@@ -28,9 +28,8 @@ const Counter = () => {
         
       </div>
       <div className={classes.roundCubes}>
-          {counterCells}
-          
-        </div>
+        {counterCells}
+      </div>
       
     </>
   );
