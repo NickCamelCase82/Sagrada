@@ -3,9 +3,13 @@ import { createAction } from '@reduxjs/toolkit';
 // Повысить уровень на 1 и добавить кубик на счетчик раундов
 export const upRound = createAction('game/round/up');
 // Удалить из общего запаса кубов те кубики, которые выпали в раунд
-export const useCubes = createAction('game/cubes/use');
+export const removeCubes = createAction('game/cubes/remove');
+// Установить активного игрока
+export const setActivePlayer = createAction('game/active_player/set');
 // Добавить кубы, которые выпали в игровую зону
 export const setDroppedСubes = createAction('game/dropped_cubes/set');
+// Удалить из резерва тот кубик, который взяли
+export const removeDroppedСube = createAction('game/dropped_cube/remove');
 // Заполнить игру общими целями
 export const setCommonGoals = createAction('game/common_goals/set');
 // Удалить оставшиеся выпавшие кубы из игры (после добавлления куба на счетчик раундов)
@@ -16,3 +20,6 @@ export const setInstruments = createAction('game/instruments/set');
 export const addPrivilegeСhipsOnInstruments = createAction(
   'game/privilege_chips/add'
 );
+
+// Добавить витраж в массив витражей игроков
+export const addStainedGlass = createAction('game/stained_glass/add');

@@ -1,0 +1,42 @@
+.droppedСubes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 60px;
+  margin: 10px;
+  border: 1px solid black;
+}
+
+.diceBtnDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.diceBtn {
+  outline: none;
+  border: 1px solid black;
+  background-color: #fff;
+  width: 150px;
+  height: 40px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: .5s;
+  margin: 2px auto;
+}
+
+.diceBtn:hover {
+  background-color: bisque;
+}
+.diceBtn:active {
+  transition: none;
+  font-weight: 700;
+}
+
+.containerReserveCube {
+  margin: 3px;
+}
+
+

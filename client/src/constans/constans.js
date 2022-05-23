@@ -37,13 +37,25 @@ import board4 from '../img/boards/4.png';
 import colorDiagonals from '../img/common-goals/ColorDiagonals.jpg';
 import colorVariety from '../img/common-goals/ColorVariety.jpg';
 import columnColorVariety from '../img/common-goals/ColumnColorVariety.jpg';
-import ColumnShadeVariety from '../img/common-goals/ColumnShadeVariety.jpg';
-import DeepShades from '../img/common-goals/DeepShades.jpg';
-import LightShades from '../img/common-goals/LightShades.jpg';
-import MediumShades from '../img/common-goals/MediumShades.jpg';
-import RowColorVariety from '../img/common-goals/RowColorVariety.jpg';
-import RowShadeVariety from '../img/common-goals/RowShadeVariety.jpg';
-import ShadeVariety from '../img/common-goals/ShadeVariety.jpg';
+import columnShadeVariety from '../img/common-goals/ColumnShadeVariety.jpg';
+import deepShades from '../img/common-goals/DeepShades.jpg';
+import lightShades from '../img/common-goals/LightShades.jpg';
+import mediumShades from '../img/common-goals/MediumShades.jpg';
+import rowColorVariety from '../img/common-goals/RowColorVariety.jpg';
+import rowShadeVariety from '../img/common-goals/RowShadeVariety.jpg';
+import shadeVariety from '../img/common-goals/ShadeVariety.jpg';
+
+import cellOne from '../img/cells/1.jpg';
+import cellTwo from '../img/cells/2.jpg';
+import cellThree from '../img/cells/3.jpg';
+import cellFour from '../img/cells/4.jpg';
+import cellFive from '../img/cells/5.jpg';
+import cellSix from '../img/cells/6.jpg';
+import cellBlue from '../img/cells/blue.jpg';
+import cellGreen from '../img/cells/green.jpg';
+import cellPurple from '../img/cells/purple.jpg';
+import cellRed from '../img/cells/red.jpg';
+import cellYellow from '../img/cells/yellow.jpg';
 
 export const CubeColors = {
   BLUE: 'blue',
@@ -110,6 +122,7 @@ export const StainedGlass = [
   {
     id: 1,
     pattern1: {
+      id: 'a',
       title: 'Калейдоскопический сон',
       complexity: 4,
       pattern: [
@@ -121,6 +134,7 @@ export const StainedGlass = [
       src: window1Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Стойкость',
       complexity: 5,
       pattern: [
@@ -141,6 +155,7 @@ export const StainedGlass = [
   {
     id: 2,
     pattern1: {
+      id: 'a',
       title: 'Цветова капель',
       complexity: 3,
       pattern: [
@@ -152,6 +167,7 @@ export const StainedGlass = [
       src: window2Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Всполохи света',
       complexity: 5,
       pattern: [
@@ -178,6 +194,7 @@ export const StainedGlass = [
   {
     id: 3,
     pattern1: {
+      id: 'a',
       title: 'Свет мира',
       complexity: 6,
       pattern: [
@@ -201,6 +218,7 @@ export const StainedGlass = [
       src: window3Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Свет звезды',
       complexity: 5,
       pattern: [
@@ -233,6 +251,7 @@ export const StainedGlass = [
   {
     id: 4,
     pattern1: {
+      id: 'a',
       title: 'Достоинство',
       complexity: 5,
       pattern: [
@@ -250,6 +269,7 @@ export const StainedGlass = [
       src: window4Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Живая вода',
       complexity: 6,
       pattern: [
@@ -276,6 +296,7 @@ export const StainedGlass = [
   {
     id: 5,
     pattern1: {
+      id: 'a',
       title: 'Солнечный кристалл',
       complexity: 3,
       pattern: [
@@ -287,6 +308,7 @@ export const StainedGlass = [
       src: window5Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Ловец теней',
       complexity: 5,
       pattern: [
@@ -307,6 +329,7 @@ export const StainedGlass = [
   {
     id: 6,
     pattern1: {
+      id: 'a',
       title: 'Величие рассвета',
       complexity: 5,
       pattern: [
@@ -324,6 +347,7 @@ export const StainedGlass = [
       src: window6Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Священная заря',
       complexity: 4,
       pattern: [
@@ -344,6 +368,7 @@ export const StainedGlass = [
   {
     id: 7,
     pattern1: {
+      id: 'a',
       title: 'Симфония света',
       complexity: 6,
       pattern: [
@@ -361,6 +386,7 @@ export const StainedGlass = [
       src: window7Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Доблесть',
       complexity: 5,
       pattern: [
@@ -381,6 +407,7 @@ export const StainedGlass = [
   {
     id: 8,
     pattern1: {
+      id: 'a',
       title: 'Пламя свечи',
       complexity: 5,
       pattern: [
@@ -404,6 +431,7 @@ export const StainedGlass = [
       src: window8Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Аура солнца',
       complexity: 6,
       pattern: [
@@ -430,6 +458,7 @@ export const StainedGlass = [
   {
     id: 9,
     pattern1: {
+      id: 'a',
       title: 'Батльо',
       complexity: 5,
       pattern: [
@@ -453,6 +482,7 @@ export const StainedGlass = [
       src: window9Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Бельесгуард',
       complexity: 3,
       pattern: [
@@ -467,6 +497,7 @@ export const StainedGlass = [
   {
     id: 10,
     pattern1: {
+      id: 'a',
       title: 'Небесное сияние',
       complexity: 5,
       pattern: [
@@ -490,6 +521,7 @@ export const StainedGlass = [
       src: window10Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Божественный свет',
       complexity: 3,
       pattern: [
@@ -510,6 +542,7 @@ export const StainedGlass = [
   {
     id: 11,
     pattern1: {
+      id: 'a',
       title: 'Благолепие цвета',
       complexity: 4,
       pattern: [
@@ -527,6 +560,7 @@ export const StainedGlass = [
       src: window11Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Учтивость',
       complexity: 5,
       pattern: [
@@ -547,6 +581,7 @@ export const StainedGlass = [
   {
     id: 12,
     pattern1: {
+      id: 'a',
       title: 'Путь света',
       complexity: 4,
       pattern: [
@@ -564,6 +599,7 @@ export const StainedGlass = [
       src: window12Front,
     },
     pattern2: {
+      id: 'b',
       title: 'Усердие',
       complexity: 5,
       pattern: [
@@ -639,52 +675,62 @@ export const CommonGoals = [
     title: 'Богатство оттенков в колонках',
     text: 'Колонки без повторяющейся яркости',
     points: 4,
-    src: ColumnShadeVariety,
+    src: columnShadeVariety,
   },
   {
     id: 5,
     title: 'Темные стекла',
     text: 'Наборы из "5" и "6" на всем витраже',
     points: 2,
-    src: DeepShades,
+    src: deepShades,
   },
   {
     id: 6,
     title: 'Светлые стекла',
     text: 'Наборы из "1" и "2" на всем витраже',
     points: 2,
-    src: LightShades,
+    src: lightShades,
   },
   {
     id: 7,
     title: 'Затемненные стекла',
     text: 'Наборы из "3" и "4" на всем витраже',
     points: 2,
-    src: MediumShades,
+    src: mediumShades,
   },
   {
     id: 8,
     title: 'Разноцветные ряды',
     text: 'Ряды без повторяющихся цветов',
     points: 6,
-    src: RowColorVariety,
+    src: rowColorVariety,
   },
   {
     id: 9,
     title: 'Богатство оттенков в рядах',
     text: 'Ряды без повторяющейся яркости',
     points: 5,
-    src: RowShadeVariety,
+    src: rowShadeVariety,
   },
   {
     id: 10,
     title: 'Многообразие оттенков',
     text: 'Наборы из 1 кубика каждой яркости на всем витраже',
     points: 5,
-    src: ShadeVariety,
+    src: shadeVariety,
   },
 ];
 
-// export const Cells = [
-
-// ]
+export const Cells = {
+  [CubeNumbers.ONE]: cellOne,
+  [CubeNumbers.TWO]: cellTwo,
+  [CubeNumbers.THREE]: cellThree,
+  [CubeNumbers.FOUR]: cellFour,
+  [CubeNumbers.FIVE]: cellFive,
+  [CubeNumbers.SIX]: cellSix,
+  [CubeColors.BLUE]: cellBlue,
+  [CubeColors.GREEN]: cellGreen,
+  [CubeColors.PURPLE]: cellPurple,
+  [CubeColors.RED]: cellRed,
+  [CubeColors.YELLOW]: cellYellow,
+};

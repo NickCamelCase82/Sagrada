@@ -3,8 +3,17 @@
 /* * {
   margin: 0;
   padding: 0;
+<<<<<<< HEAD
   height: 100%;
 } */
+=======
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fdf5e6;
+}
+>>>>>>> ff3e23fd0313eb94552a606d36038f241f014b44
 
 #root {
   width: 100%;

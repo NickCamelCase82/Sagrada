@@ -3,30 +3,20 @@ import * as actions from '../actions/player';
 // import { CubeColors, CubeNumbers } from '../../constans/constans';
 
 const initialState = {
-  login: null,
+  login: 'liza',
   personalGoal: null,
-  // personalGoal: {
-  //   id: null,
-  //   color: null,
-  //   title: null,
-  //   text: null,
-  //   src: null,
-  // },
   windowFrame: null,
-  // windowFrame: {
-  //   id: null,
-  //   src: null,
-  // },
   stainedGlass: null,
-  // stainedGlass: {
-  //   id: null,
-  //   title: null,
-  //   complexity: null,
-  //   pattern: [],
-  //   src: null,
-  // },
   numberPoints: null,
   privilegeСhips: null,
+  stainedGlassChoice: null,
+  spacedСubes: [
+    [null, null, null, null, null],
+    [null, null, null, null, null],
+    [null, null, null, null, null],
+    [null, null, null, null, null],
+  ],
+  raisedCube: null,
 };
 
 const player = createReducer(initialState, (builder) => {
@@ -68,10 +58,22 @@ const player = createReducer(initialState, (builder) => {
   // второй - элемент вложенного массива,
   // и третий - объект куба с ключами color и number
   builder.addCase(actions.addCubeToStainedGlass, (state, action) => {
-    const cube = action.payload[3];
+    const cube = action.payload[2];
     const x = action.payload[1];
     const y = action.payload[0];
-    state.stainedGlass.pattern[y][x] = cube;
+    state.spacedСubes[y][x] = cube;
+  });
+  // action принимает payload с массивом двух витражей для выбора игрока
+  builder.addCase(actions.setstainedGlassForChoice, (state, action) => {
+    state.stainedGlassChoice = action.payload;
+  });
+  // action принимает payload с объектом кубика
+  builder.addCase(actions.setRaisedCube, (state, action) => {
+    state.raisedCube = action.payload;
+  });
+  // устанавливает поднятому кубику значение null
+  builder.addCase(actions.resetRaisedCube, (state) => {
+    state.raisedCube = null;
   });
 });
 

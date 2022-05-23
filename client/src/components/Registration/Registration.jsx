@@ -7,7 +7,22 @@ export default function Registration() {
   const inputs = useSelector((store) => store.registrationInputs);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+import FormItem from '../FormItem/FormItem';
 
+const Registration = () => {
+  return (
+    <div>
+      Registration
+      <FormItem
+        title="Регистрация"
+        input={{ email: 'email', password: 'Пароль' }}
+        button={{ submit: 'Зарегистрироваться', redirect: 'Войти' }}
+        link="/login"
+        formType="registration"
+      />
+    </div>
+  );
+}
   const registrationHandler = async (e) => {
     e.preventDefault();
 

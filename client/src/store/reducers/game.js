@@ -1,24 +1,34 @@
 import { createReducer } from '@reduxjs/toolkit';
-import { CubeColors /* CubeNumbers */ } from '../../constans/constans';
+import { CubeColors, CubeNumbers } from '../../constans/constans';
 import * as actions from '../actions/game';
 
 const initialState = {
   round: {
-    number: 1,
-    cubes: [],
+    number: 10,
+    cubes: [
+      { color: 'blue', number: 'one' },
+      { color: 'blue', number: 'one' },
+      { color: 'blue', number: 'one' },
+      { color: 'blue', number: 'one' },
+      { color: 'blue', number: 'one' },
+      { color: 'blue', number: 'one' },
+      { color: 'blue', number: 'one' },
+      { color: 'blue', number: 'one' },
+      { color: 'blue', number: 'one' },
+    ],
   },
   cubes: [
-    { color: [CubeColors.BLUE], count: 18 },
-    { color: [CubeColors.GREEN], count: 18 },
-    { color: [CubeColors.PURPLE], count: 18 },
-    { color: [CubeColors.RED], count: 18 },
-    { color: [CubeColors.YELLOW], count: 18 },
+    { color: CubeColors.BLUE, count: 18 },
+    { color: CubeColors.GREEN, count: 18 },
+    { color: CubeColors.PURPLE, count: 18 },
+    { color: CubeColors.RED, count: 18 },
+    { color: CubeColors.YELLOW, count: 18 },
   ],
+  activePlayer: 'liza',
   commonGoals: [],
-  droppedСubes: [
-    // { color: [CubeColors.BLUE], number: 6 }
-  ],
+  droppedСubes: null,
   instruments: [],
+  stainedGlass: [],
 };
 
 const game = createReducer(initialState, (builder) => {
@@ -28,26 +38,30 @@ const game = createReducer(initialState, (builder) => {
     state.round.cubes.push(action.payload);
   });
   // action принимает payload с массивом, элементы которого строка с названием цвета
-  builder.addCase(actions.useCubes, (state, action) => {
+  builder.addCase(actions.removeCubes, (state, action) => {
     action.payload.forEach((payloadCube) => {
       state.cubes.forEach((stateCube) => {
+        // console.log('stateCube', stateCube);
         if (stateCube.color === payloadCube) {
           stateCube.count -= 1;
         }
       });
     });
   });
-  // action принимает payload с массивом объектов кубов с ключами color и number
+  // action принимает payload со строкой логина игрока
+  builder.addCase(actions.setActivePlayer, (state, action) => {
+    state.activePlayer = action.payload;
+  });
+  // action принимает payload с массивом объектов кубов с ключами color и строку с номером
   builder.addCase(actions.setDroppedСubes, (state, action) => {
-    action.payload.forEach((cube) => {
-      state.droppedСubes.push(cube);
-    });
+    // action.payload.forEach((cube) => {
+    //   state.droppedСubes.push(cube);
+    // });
+    state.droppedСubes = action.payload;
   });
   // action принимает payload с массивом общих целей c ключами id title text points src
   builder.addCase(actions.setCommonGoals, (state, action) => {
-    action.payload.forEach((goal) => {
-      state.commonGoals.push(goal);
-    });
+    state.commonGoals = action.payload;
   });
   // меняет состояние выпавших кубов на пустой массив
   builder.addCase(actions.deleteRemainingCubes, (state) => {
@@ -69,6 +83,30 @@ const game = createReducer(initialState, (builder) => {
         instrument.amountPrivilegeСhips += amount;
       }
     });
+  });
+  // action принимает payload с объектом витража
+  builder.addCase(actions.addStainedGlass, (state, action) => {
+    state.stainedGlass.push(action.payload);
+  });
+  // action принимает payload с объектом куба, который надо удалить из резерва
+  builder.addCase(actions.removeDroppedСube, (state, action) => {
+    console.log('tyt', action.payload);
+    const { color, number } = action.payload;
+
+    const needIndex = state.droppedСubes.findIndex(
+      (cube) => cube.color === color && cube.number === number
+    );
+
+    const restedCubes = state.droppedСubes.filter(
+      (_, index) => index !== needIndex
+    );
+    // const oneCube = state.droppedСubes.filter((cube) => {
+    //   return (
+    //     cube.color !== action.payload.color &&
+    //     cube.number !== action.payload.number
+    //   );
+    // });
+    state.droppedСubes = restedCubes;
   });
 });
 

@@ -31,7 +31,7 @@ const Main = () => {
         <Link to="/register" type="button" className={classes.mainRegisterLink}>
           Регистрация
         </Link>
-        <Link to="/game" type="button" className={classes.mainPlayLink}>
+        <Link to="/lobby" type="button" className={classes.mainPlayLink}>
           Играть
         </Link>
       </div>

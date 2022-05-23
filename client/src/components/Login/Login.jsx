@@ -6,6 +6,22 @@ export default function Login() {
   const inputs = useSelector((store) => store.loginInputs);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+import FormItem from '../FormItem/FormItem';
+
+const Login = () => {
+  return (
+    <div>
+      Login
+      <FormItem
+        title="Вход"
+        input={{ email: 'email', password: 'Пароль' }}
+        button={{ submit: 'Войти', redirect: 'Регистрация' }}
+        link="/register"
+        formType="login"
+      />
+    </div>
+  );
+}
 
   const loginHandler = async (e) => {
     e.preventDefault();
