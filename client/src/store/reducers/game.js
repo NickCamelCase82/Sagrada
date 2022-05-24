@@ -90,7 +90,7 @@ const game = createReducer(initialState, (builder) => {
   });
   // action принимает payload с объектом куба, который надо удалить из резерва
   builder.addCase(actions.removeDroppedСube, (state, action) => {
-    console.log('tyt', action.payload);
+    // console.log('tyt', action.payload);
     const { color, number } = action.payload;
 
     const needIndex = state.droppedСubes.findIndex(

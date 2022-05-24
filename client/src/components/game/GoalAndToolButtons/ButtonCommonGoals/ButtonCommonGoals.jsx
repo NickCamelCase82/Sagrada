@@ -27,10 +27,10 @@ const ButtonCommonGoals = () => {
   const stateCommonGoals = useSelector((state) => state.game.commonGoals);
 
   useEffect(() => {
-    console.log('1');
+    // console.log('1');
     if (stateCommonGoals.length === 0) {
-      console.log('2');
-      console.log('asdsadd');
+      // console.log('2');
+      // console.log('asdsadd');
       const goals = randomCommonGoals(3, CommonGoals);
       dispatch(setCommonGoals(goals));
     }

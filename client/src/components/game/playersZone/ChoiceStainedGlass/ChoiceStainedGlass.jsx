@@ -10,7 +10,7 @@ const ChoiceStainedGlass = () => {
   const stainedGlassWindows = useSelector(
     (state) => state.player.stainedGlassChoice
   );
-  console.log('lalal ', stainedGlassWindows);
+  // console.log('lalal ', stainedGlassWindows);
 
   useEffect(() => {
     dispatch(setstainedGlassForChoiceThunk(1, StainedGlass));
@@ -19,7 +19,7 @@ const ChoiceStainedGlass = () => {
   if (!stainedGlassWindows?.length) {
     return null;
   }
-  console.log('123');
+  // console.log('123');
 
   return (
     <div className="container-choice-stained-glass">

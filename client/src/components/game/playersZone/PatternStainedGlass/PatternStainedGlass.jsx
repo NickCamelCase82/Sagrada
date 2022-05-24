@@ -7,9 +7,9 @@ const PatternStainedGlass = () => {
   const currentStainedGlass = useSelector((state) => state.player.stainedGlass);
   const pattern = useSelector((state) => state.player.stainedGlass.pattern);
   const spacedСubes = useSelector((state) => state.player.spacedСubes);
-  console.log('tyt', spacedСubes);
+  // console.log('tyt', spacedСubes);
+  // console.log(pattern);
 
-  console.log(pattern);
   return (
     <div className="container-pattern-stained-glass">
       {pattern.map((_, index) => (
