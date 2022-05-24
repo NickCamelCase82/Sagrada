@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login/Login';
+import Logout from './components/Logout/Logout';
 import Registration from './components/Registration/Registration';
 import ResetPassword from './components/ResetPassword/ResetPassword';
 import Game from './components/game/Game/Game';

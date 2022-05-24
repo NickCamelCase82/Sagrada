@@ -63,12 +63,9 @@ userRouter.post('/login', validateLogin, async (req, res) => {
 
 userRouter.get('/session', (req, res) => {
   if (!req.session.user) {
-    res.json({});
+    req.session.user = {};
   } else {
-    const user = {
-      id: req.session.user.id,
-    };
-    res.json(user);
+    res.json(req.session.user);
   }
 });
 
