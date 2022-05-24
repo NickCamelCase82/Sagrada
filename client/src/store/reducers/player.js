@@ -3,7 +3,7 @@ import * as actions from '../actions/player';
 // import { CubeColors, CubeNumbers } from '../../constans/constans';
 
 const initialState = {
-  login: 'liza',
+  login: null,
   personalGoal: null,
   windowFrame: null,
   stainedGlass: null,
@@ -53,15 +53,9 @@ const player = createReducer(initialState, (builder) => {
   builder.addCase(actions.usePrivilegeСhips, (state, action) => {
     state.privilegeСhips -= action.payload;
   });
-  // action принимает payload с массивом,
-  // где первый элемент - это номер вложенного массива шаблона
-  // второй - элемент вложенного массива,
-  // и третий - объект куба с ключами color и number
-  builder.addCase(actions.addCubeToStainedGlass, (state, action) => {
-    const cube = action.payload[2];
-    const x = action.payload[1];
-    const y = action.payload[0];
-    state.spacedСubes[y][x] = cube;
+
+  builder.addCase(actions.setCurrentPlayerPattern, (state, action) => {
+    state.spacedСubes = action.payload;
   });
   // action принимает payload с массивом двух витражей для выбора игрока
   builder.addCase(actions.setstainedGlassForChoice, (state, action) => {

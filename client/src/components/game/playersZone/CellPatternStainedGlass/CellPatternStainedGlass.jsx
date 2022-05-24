@@ -3,11 +3,41 @@ import { Cells } from '../../../../constans/constans';
 import './CellPatternStainedGlass.css';
 import Dice from '../../Dice/Dice';
 import { useDispatch, useSelector } from 'react-redux';
-import { putCube } from '../../../../store/actions/common';
+import axios from 'axios';
+// import { putCube } from '../../../../store/actions/common';
 
 const CellPatternStainedGlass = ({ cell, row, orderCell, cube }) => {
   const raisedCube = useSelector((state) => state.player.raisedCube);
   const activePlayer = useSelector((state) => state.game.activePlayer);
+  
+// <<<<<<< component-reserve-cubes
+  
+  const lobby = useSelector((state) => state.lobby);
+  const dispatch = useDispatch();
+
+  const handlePutCube = async () => {
+    if (!raisedCube) {
+      return false;
+    }
+
+    console.log('click');
+
+    await axios.post(
+      'http://localhost:3001/game/cube/stained_glass',
+      {
+        gameId: lobby.id,
+        cell: [row, orderCell],
+        cube: raisedCube,
+      },
+      {
+        withCredentials: true,
+      }
+    );
+
+    // dispatch(putCube(row, orderCell, raisedCube, activePlayer));
+    
+// =======
+    
   const pattern = useSelector((state) => state.player.stainedGlass.pattern);
   const spacedСubes = useSelector((state) => state.player.spacedСubes);
   const dispatch = useDispatch();
@@ -196,6 +226,9 @@ const CellPatternStainedGlass = ({ cell, row, orderCell, cube }) => {
       const errText = 'Ячейка недоступна' // добавить в состояние и потом из него выводить ошибку
       console.log(errText);
     }
+    
+// >>>>>>> dev
+    
   };
 
   return (

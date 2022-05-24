@@ -1,7 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
 
-// Повысить уровень на 1 и добавить кубик на счетчик раундов
-export const upRound = createAction('game/round/up');
+export const setRounds = createAction('game/rounds/set');
 // Удалить из общего запаса кубов те кубики, которые выпали в раунд
 export const removeCubes = createAction('game/cubes/remove');
 // Установить активного игрока
@@ -23,3 +22,10 @@ export const addPrivilegeСhipsOnInstruments = createAction(
 
 // Добавить витраж в массив витражей игроков
 export const addStainedGlass = createAction('game/stained_glass/add');
+// Добавить информацию о всех игроков
+export const setPlayers = createAction('game/players/set');
+export const addPatternsToPlayers = createAction(
+  'game/patterns_to_players/add'
+);
+
+export const setPlayerPattern = createAction('game/players/pattern/set');

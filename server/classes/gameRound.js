@@ -1,3 +1,5 @@
+const PlayerPatterns = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
 class Rounds {
   gameRounds = {};
 
@@ -5,9 +7,9 @@ class Rounds {
   //   this.gameRounds[gameId].rounds = [];
   // }
 
-  getRound(gameId) {
+  getRounds(gameId) {
     if (this.gameRounds[gameId]) {
-      return this.gameRounds[gameId].rounds.length + 1;
+      return this.gameRounds[gameId].rounds;
     }
     return null;
   }
@@ -24,12 +26,8 @@ class Rounds {
     }
   }
 
-  setReserve(gameId, array) {
-    if (this.gameRounds[gameId]) {
-      this.gameRounds[gameId].reserve = array;
-    } else {
-      return null;
-    }
+  getPlayers(gameId) {
+    return this.gameRounds[gameId].players;
   }
 
   removeFromReserve(gameId, cube) {
@@ -46,7 +44,7 @@ class Rounds {
     }
   }
 
-  addGame(gameId, users) {
+  addGame(gameId, players) {
     this.gameRounds[gameId] = {
       cubes: [
         { color: 'blue', count: 18 },
@@ -56,11 +54,64 @@ class Rounds {
         { color: 'yellow', count: 18 },
       ],
       rounds: [],
-      reserve: null,
-      users,
-      activePlayer: null,
+      players,
       playersQueue: null,
+      activePlayer: null,
+      reserve: null,
+      patternsForSelection: null,
     };
+    this.setTurnOrder(gameId);
+    this.nextActivePlayer(gameId);
+    this.selectPatternsForPlayers(gameId);
+    return this.gameRounds[gameId];
+  }
+
+  getActivePlayer(gameId) {
+    return this.gameRounds[gameId].activePlayer;
+  }
+
+  selectPatternsForPlayers(gameId) {
+    const { players } = this.gameRounds[gameId];
+    const patterns = Rounds.shuffleArray(PlayerPatterns);
+    const selectedPatterns = players.reduce(
+      (acc, curr, index) => ({
+        ...acc,
+        [curr.id]: [patterns[index * 2], patterns[index * 2 + 1]],
+      }),
+      {}
+    );
+    this.gameRounds[gameId].patternsForSelection = selectedPatterns;
+  }
+
+  setPlayerSelectedPattern(gameId, playerId, patternId) {
+    console.log(gameId, playerId, patternId);
+    console.log('this.gameRounds', this.gameRounds);
+    if (this.gameRounds[gameId]) {
+      console.log('kkjkjkjk');
+      const player = this.gameRounds[gameId].players.find(
+        (elem) => elem.id === playerId
+      );
+      console.log('player', player);
+      if (player) {
+        this.gameRounds[gameId].players = this.gameRounds[gameId].players.map(
+          (elem) => {
+            if (elem.id === player.id) {
+              return {
+                ...elem,
+                selectedPattern: patternId,
+              };
+            }
+            return elem;
+          }
+        );
+      }
+    }
+  }
+
+  isAllPatternsSelected(gameId) {
+    const { players } = this.gameRounds[gameId];
+    console.log('players', players);
+    return players.every((player) => player.selectedPattern);
   }
 
   static randomDiceNumber() {
@@ -68,9 +119,9 @@ class Rounds {
   }
 
   static randomArrayElement(min, max, arrayAvailableCubes) {
-    return arrayAvailableCubes[
-      Math.floor(Math.random() * (max - min + 1)) + min
-    ];
+    const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+    console.log(randomNum, max, min);
+    return arrayAvailableCubes[randomNum];
   }
 
   static numberOfGivenCubes(numberPlayers) {
@@ -115,27 +166,117 @@ class Rounds {
     });
   }
 
-  rollTheDice(gameId, numberPlayers) {
-    const numberOfCubesNeeded = Rounds.numberOfGivenCubes(numberPlayers);
+  setReserve(gameId, array) {
+    if (this.gameRounds[gameId]) {
+      this.gameRounds[gameId].reserve = array;
+    } else {
+      return null;
+    }
+  }
+
+  getReserve(gameId) {
+    if (this.gameRounds[gameId]) {
+      return this.gameRounds[gameId].reserve;
+    }
+    return null;
+  }
+
+  rollTheDice(gameId) {
+    const playersCount = this.gameRounds[gameId].players.length;
+    const numberOfCubesNeeded = Rounds.numberOfGivenCubes(playersCount);
     const arrayAvailableCubes = this.giveArrayAvailableCubes(gameId);
     const cubes = [];
-    while (numberOfCubesNeeded) {
-      cubes.push(
-        Rounds.randomArrayElement(
-          0,
-          arrayAvailableCubes - 1,
-          arrayAvailableCubes
-        )
+    console.log(numberOfCubesNeeded);
+    while (numberOfCubesNeeded > cubes.length) {
+      console.log(numberOfCubesNeeded);
+      const randomElement = Rounds.randomArrayElement(
+        0,
+        arrayAvailableCubes.length - 1,
+        arrayAvailableCubes
       );
+      console.log(randomElement);
+      cubes.push(randomElement);
     }
 
     this.removeRolledCubes(cubes, gameId);
+    this.setReserve(gameId, cubes);
     return cubes;
+  }
+
+  static shuffleArray(array) {
+    return array
+      .map((elem) => [Math.random(), elem])
+      .sort()
+      .map((elem) => elem[1]);
+  }
+
+  setTurnOrder(gameId) {
+    const { players } = this.gameRounds[gameId];
+    console.log(players);
+    let mixedPlayers = Rounds.shuffleArray(players.map(({ id }) => id));
+    console.log(mixedPlayers);
+    let numberRounds = 10;
+
+    const orderMoves = [];
+
+    while (numberRounds > 0) {
+      const arrayPerRound = [];
+
+      mixedPlayers.forEach((player, index) => {
+        if (index === mixedPlayers.length - 1) {
+          arrayPerRound.push(player, player);
+        } else {
+          arrayPerRound.push(player);
+        }
+      });
+
+      mixedPlayers.reverse();
+
+      mixedPlayers.forEach((reversePlayer, index) => {
+        if (index) {
+          arrayPerRound.push(reversePlayer);
+        }
+      });
+
+      mixedPlayers.reverse();
+      mixedPlayers = mixedPlayers.splice(+1).concat(mixedPlayers);
+
+      orderMoves.push(arrayPerRound);
+      numberRounds -= 1;
+    }
+    this.gameRounds[gameId].playersQueue = orderMoves;
+    return orderMoves;
+  }
+
+  nextActivePlayer(gameId) {
+    if (this.gameRounds[gameId].playersQueue.length > 0) {
+      if (this.gameRounds[gameId].playersQueue[0].length === 0) {
+        this.nextRound(gameId);
+        this.gameRounds[gameId].playersQueue =
+          this.gameRounds[gameId].playersQueue.slice(1);
+      }
+      const first = this.gameRounds[gameId].playersQueue[0][0];
+      this.gameRounds[gameId].playersQueue[0] =
+        this.gameRounds[gameId].playersQueue[0].slice(1);
+
+      this.gameRounds[gameId].activePlayer = first;
+      return first;
+    }
+    return null;
+  }
+
+  nextRound(gameId) {
+    const reserve = this.getReserve(gameId);
+    this.gameRounds[gameId].rounds = [
+      ...this.gameRounds[gameId].rounds,
+      reserve[0],
+    ];
+    this.rollTheDice(gameId);
   }
 }
 
 const rounds = new Rounds();
-// console.log(rounds.addGame(45))
+// console.log(rounds.addGame(45, ['Вика', 'Вася', 'Петя', 'Даша']))
 // console.log(rounds.addRound(45, { color: 'red', number: 'two' }))
 // console.log(rounds.gameRounds[45])
 // console.log(rounds.getRound(45))
@@ -148,4 +289,9 @@ const rounds = new Rounds();
 // console.log(Rounds.numberOfGivenCubes(2))
 // console.log(rounds.giveArrayAvailableCubes(45))
 // console.log(rounds.rollTheDice(45, 2))
+// console.log(rounds.setTurnOrder(45))
+// console.log(rounds.setTurnOrder(45))
+// console.log(rounds.getActivePlayer(45))
+// console.log(rounds.nextActivePlayer(45))
+
 module.exports = rounds;

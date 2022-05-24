@@ -23,10 +23,11 @@ export default function Registration() {
       </div>
     );
   };
+
   const registrationHandler = async (e) => {
     e.preventDefault();
 
-    const toBack = await fetch('http://localhost:3002/register', {
+    const toBack = await fetch('http://localhost:3001/register', {
       method: 'POST',
       credentials: 'include',
       headers: {
@@ -36,7 +37,7 @@ export default function Registration() {
     });
     const fromBack = await toBack.json();
     dispatch({ type: 'SET_USER', payload: fromBack });
-    //dispatch({ type: 'CLEAR_DATA', payload: {} });
+    dispatch({ type: 'CLEAR_DATA', payload: {} });
     navigate('/', { fromBack });
   };
 

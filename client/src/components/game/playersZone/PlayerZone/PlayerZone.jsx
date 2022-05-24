@@ -1,7 +1,11 @@
 import React from 'react';
 import Modal from 'react-modal';
 import './PlayerZone.css';
+import Slider from 'react-slick';
 import PatternStainedGlass from '../PatternStainedGlass/PatternStainedGlass';
+import { useSelector } from 'react-redux';
+import { StainedGlass } from '../../../../constans/constans';
+import StainedGlassOfOtherPlayers from '../StainedGlassOfOtherPlayers/StainedGlassOfOtherPlayers';
 
 const customStyles = {
   content: {
@@ -13,10 +17,21 @@ const customStyles = {
     bottom: 'auto',
     marginRight: '-50%',
     transform: 'translate(-50%, -50%)',
+    zIndex: 10,
   },
 };
 
 const PlayerZone = () => {
+  const otherPlayers = useSelector((state) => state.game.players);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -36,9 +51,13 @@ const PlayerZone = () => {
   return (
     <div className="container-player-zone">
       <div className="container-btn-other-stained-glass">
-        <button className="btn-other-stained-glass" onClick={openModal}>
-          Соперники
-        </button>
+        {otherPlayers ? (
+          <button className="btn-other-stained-glass" onClick={openModal}>
+            Соперники
+          </button>
+        ) : (
+          ''
+        )}
       </div>
       <Modal
         isOpen={modalIsOpen}
@@ -47,13 +66,21 @@ const PlayerZone = () => {
         style={customStyles}
         contentLabel="Example Modal"
       >
-        {/* <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2> */}
         <button
           className="btn-other-stained-glass btn-other-stained-glass-close"
           onClick={closeModal}
         >
           Закрыть
         </button>
+        <Slider {...settings}>
+          {otherPlayers
+            ? otherPlayers.map((player) => {
+                return (
+                  <StainedGlassOfOtherPlayers player={player} key={player.id} />
+                );
+              })
+            : ''}
+        </Slider>
       </Modal>
       <PatternStainedGlass />
     </div>
