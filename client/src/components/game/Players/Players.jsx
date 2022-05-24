@@ -6,7 +6,10 @@ import { loadLobby } from '../../../store/actions/lobby';
 import Game from '../Game/Game';
 import classes from './Players.module.css';
 import axios from 'axios';
-import { setstainedGlassForChoice } from '../../../store/actions/player';
+import {
+  setstainedGlassForChoice,
+  setLogin,
+} from '../../../store/actions/player';
 import { setPlayers } from '../../../store/actions/game';
 
 const Players = () => {
@@ -15,6 +18,15 @@ const Players = () => {
   const params = useParams();
   const lobby = useSelector((state) => state.lobby);
   const user = useSelector((state) => state.user);
+  console.log(user);
+
+  const exitFromLobby = () => {
+    const response = axios.post(
+      'http://localhost:3001/game/lobby/exit',
+      { id: Number(params.id) },
+      { withCredentials: true }
+    );
+  };
 
   useEffect(() => {
     console.log('params', params);
@@ -23,8 +35,13 @@ const Players = () => {
       if (message.type === 'GAME_STARTED') {
         console.log(message);
         const { players, patternsForSelection } = message.data;
+        const otherGames = players.filter((gamer) => gamer.id !== user.id);
         dispatch(setstainedGlassForChoice(patternsForSelection[user.id]));
-        dispatch(setPlayers(players));
+        console.log(otherGames.length);
+        if (otherGames.length) {
+          dispatch(setPlayers(otherGames));
+        }
+        dispatch(setLogin(user.login));
         navigate('/game/' + params.id);
       }
       if (message.type === 'UPDATE_LOBBY') {
@@ -33,6 +50,11 @@ const Players = () => {
         }
       }
     });
+
+    return () => {
+      socket.exit('lobby_' + params.id);
+      exitFromLobby();
+    };
   }, []);
 
   if (!lobby.players) return <div>Not Found</div>;
@@ -56,8 +78,8 @@ const Players = () => {
       <div className={classes.topnav}>
         <Link to="/">На главную</Link>
         <Link to="/logout">Выйти</Link>
-        <p>id игры</p>
-        <p>имя пользователя</p>
+        <p>{lobby ? `Игра: ${lobby.id}` : 'id игры'}</p>
+        <p>{user.login}</p>
       </div>
       <ol className={classes.rounded}>
         {lobby.players.map((player) => (
@@ -66,11 +88,13 @@ const Players = () => {
           </li>
         ))}
       </ol>
-      <div className={classes.btnDiv}>
-        <button className={classes.btn} onClick={handleCreateGame}>
-          <div>Начать игру</div>
-        </button>
-      </div>
+      {user.id === lobby.creator.id && (
+        <div className={classes.btnDiv}>
+          <button className={classes.btn} onClick={handleCreateGame}>
+            <div>Начать игру</div>
+          </button>
+        </div>
+      )}
     </>
   );
 };

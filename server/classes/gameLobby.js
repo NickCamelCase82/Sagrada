@@ -58,6 +58,43 @@ class Lobby {
       }
     }
   }
+
+  getLobbiesInfo() {
+    return Object.keys(this.lobby).map((key) => {
+      const lobby = this.lobby[key];
+
+      return {
+        id: Number(key),
+        creator: lobby.creator,
+      };
+    });
+  }
+
+  exitUserFromLobby(lobbyId, id) {
+    this.lobby[lobbyId].players = this.lobby[lobbyId].players.filter(
+      (player) => player.id !== id
+    );
+
+    if (this.lobby[lobbyId].players.length === 0) {
+      this.lobby = Object.keys(this.lobby).reduce((acc, curr) => {
+        console.log(curr, lobbyId);
+        if (Number(curr) === lobbyId) {
+          return acc;
+        }
+
+        return { ...acc, [curr]: this.lobby[curr] };
+      }, {});
+    }
+  }
+
+  changeCreator(lobbyId) {
+    if (this.lobby[lobbyId]) {
+      const { players } = this.lobby[lobbyId];
+      if (players.length > 0) {
+        this.lobby[lobbyId].creator = players[0];
+      }
+    }
+  }
 }
 
 const lobby = new Lobby();

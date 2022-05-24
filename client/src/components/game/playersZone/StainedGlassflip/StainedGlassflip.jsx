@@ -1,25 +1,13 @@
 import React, { useState } from 'react';
 import './StainedGlassflip.css';
-import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
-import { setStainedGlass } from '../../../../store/actions/player';
-import { addStainedGlass } from '../../../../store/actions/game';
 
-const StainedGlassflip = ({ stainedGlass }) => {
-  const dispatch = useDispatch();
+const StainedGlassflip = ({ stainedGlass, onSelect }) => {
   console.log(stainedGlass);
   const [side, setSide] = useState(true);
 
-  const handleTakeStainedGlass = () => {
+  const handleTakeStainedGlass = async () => {
     let objStainedGlass = side ? stainedGlass.pattern1 : stainedGlass.pattern2;
-    objStainedGlass = {
-      ...objStainedGlass,
-      id: `${stainedGlass.id}${objStainedGlass.id}`,
-    };
-    console.log('this ', objStainedGlass);
-
-    dispatch(setStainedGlass(objStainedGlass));
-    dispatch(addStainedGlass(objStainedGlass));
+    onSelect(`${stainedGlass.id}${objStainedGlass.id}`);
   };
 
   return (

@@ -2,7 +2,13 @@ const Lobby = require('../classes/gameLobby');
 const Rounds = require('../classes/gameRound');
 const GameRound = require('../classes/gameRound');
 const PlayerPatterns = require('../classes/playerPatterns');
-const { getMessage, UPDATE_LOBBY, GAME_STARTED } = require('../socket/types');
+const {
+  getMessage,
+  UPDATE_LOBBY,
+  GAME_STARTED,
+  PLAYERS_SELECTED_PATTERNS,
+  PUT_CUBE_FOR_STAINED_GLASS,
+} = require('../socket/types');
 const router = require('express').Router();
 
 // const getRandomInt = (min, max) =>
@@ -85,6 +91,26 @@ router.post('/lobby/create', (req, res) => {
   const lobby = Lobby.addGame(user);
 
   res.send(lobby);
+
+  req.io.emit('lobbies', {});
+});
+
+router.post('/lobby/exit', (req, res) => {
+  const { id } = req.body;
+  const user = {
+    id: req.session.user.userId,
+    login: req.session.user.userLogin,
+  };
+
+  const lobby = Lobby.getLobby(id);
+  Lobby.exitUserFromLobby(id, user.id);
+  if (lobby.creator.id === user.id) {
+    Lobby.changeCreator(id);
+  }
+
+  req.io.emit(`lobby_${id}`, getMessage(UPDATE_LOBBY, user.id));
+  req.io.emit('lobbies', {});
+  res.end();
 });
 
 router.post('/pattern/select', (req, res) => {
@@ -92,8 +118,30 @@ router.post('/pattern/select', (req, res) => {
 
   Rounds.setPlayerSelectedPattern(gameId, playerId, patternId);
   PlayerPatterns.addPlayer(gameId, playerId);
+  console.log('PlayerPatterns.patterns', PlayerPatterns.patterns);
   const isAllPatternsSelected = Rounds.isAllPatternsSelected(gameId);
+  console.log(isAllPatternsSelected);
   res.send(isAllPatternsSelected);
+
+  const rounds = GameRound.getRounds(gameId);
+  GameRound.rollTheDice(gameId);
+  const reserve = GameRound.getReserve(gameId);
+  const activePlayer = Rounds.getActivePlayer(gameId);
+
+  const patterns = PlayerPatterns.getPatterns(gameId);
+
+  if (isAllPatternsSelected) {
+    req.io.emit(
+      `game_${gameId}`,
+      getMessage(PLAYERS_SELECTED_PATTERNS, null, {
+        rounds,
+        reserve,
+        patterns,
+        players: GameRound.getPlayers(gameId),
+        activePlayer,
+      })
+    );
+  }
 });
 
 router.post('/create', (req, res) => {
@@ -110,6 +158,41 @@ router.post('/create', (req, res) => {
     })
   );
   res.send({ success: true });
+});
+
+router.post('/cube/stained_glass', (req, res) => {
+  const { gameId, cell, cube } = req.body;
+  const player = req.session.user.userId;
+  // console.log(player, player, cell, cube);
+  // console.log('+++++++++++++++++++++=', PlayerPatterns.patterns[0][0]);
+
+  // типо добавили в ячейку куб и отсылаем паттерн обновленный
+  PlayerPatterns.updatePatternCell(gameId, player, cell, cube);
+  const pattern = PlayerPatterns.getPattern(gameId, player);
+  GameRound.removeFromReserve(gameId, cube);
+  const activePlayer = GameRound.nextActivePlayer(gameId);
+
+  const rounds = GameRound.getRounds(gameId);
+  const reserve = GameRound.getReserve(gameId);
+  // const reserve = GameRound.
+  // console.log(pattern);
+  res.send(true);
+
+  console.log(pattern);
+
+  req.io.emit(
+    `game_${gameId}`,
+    getMessage(PUT_CUBE_FOR_STAINED_GLASS, player, {
+      pattern,
+      activePlayer,
+      reserve,
+      rounds,
+    })
+  );
+});
+
+router.get('/lobbies', (req, res) => {
+  res.send(Lobby.getLobbiesInfo());
 });
 
 module.exports = router;

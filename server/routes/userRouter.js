@@ -63,19 +63,21 @@ userRouter.post('/login', validateLogin, async (req, res) => {
 });
 
 userRouter.get('/session', (req, res) => {
-  console.log(req.session.user);
   if (!req.session.user) {
-    res.json({});
+    req.session.user = {};
+    res.end();
   } else {
     const user = {
       id: req.session.user.userId,
       login: req.session.user.userLogin,
     };
     res.json(user);
+    // res.json(req.session.user);
   }
 });
 
 userRouter.get('/logout', (req, res) => {
+  console.log(req.session);
   req.session.destroy();
   res.clearCookie('MyCookie');
   res.end();

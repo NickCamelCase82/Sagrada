@@ -8,6 +8,9 @@ const Socket = () => {
     join(room, callback) {
       socket.on(room, callback);
     },
+    exit(room) {
+      socket.off(room);
+    },
   };
   //   console.log(params);
   //   if (params.id) {

@@ -3,20 +3,7 @@ import { CubeColors, CubeNumbers } from '../../constans/constans';
 import * as actions from '../actions/game';
 
 const initialState = {
-  round: {
-    number: 10,
-    cubes: [
-      { color: 'blue', number: 'one' },
-      { color: 'blue', number: 'one' },
-      { color: 'blue', number: 'one' },
-      { color: 'blue', number: 'one' },
-      { color: 'blue', number: 'one' },
-      { color: 'blue', number: 'one' },
-      { color: 'blue', number: 'one' },
-      { color: 'blue', number: 'one' },
-      { color: 'blue', number: 'one' },
-    ],
-  },
+  rounds: [],
   players: null,
   cubes: [
     { color: CubeColors.BLUE, count: 18 },
@@ -33,10 +20,8 @@ const initialState = {
 };
 
 const game = createReducer(initialState, (builder) => {
-  // action принимает payload с объектом куба и ключами color и number
-  builder.addCase(actions.upRound, (state, action) => {
-    state.round.number += 1;
-    state.round.cubes.push(action.payload);
+  builder.addCase(actions.setRounds, (state, action) => {
+    state.rounds = action.payload;
   });
   // action принимает payload с массивом, элементы которого строка с названием цвета
   builder.addCase(actions.removeCubes, (state, action) => {
@@ -49,7 +34,7 @@ const game = createReducer(initialState, (builder) => {
       });
     });
   });
-  // action принимает payload со строкой логина игрока
+  // action принимает payload со id игрока
   builder.addCase(actions.setActivePlayer, (state, action) => {
     state.activePlayer = action.payload;
   });
@@ -58,6 +43,7 @@ const game = createReducer(initialState, (builder) => {
     // action.payload.forEach((cube) => {
     //   state.droppedСubes.push(cube);
     // });
+    console.log('--------------------------------------', action.payload);
     state.droppedСubes = action.payload;
   });
   // action принимает payload с массивом общих целей c ключами id title text points src
@@ -111,6 +97,30 @@ const game = createReducer(initialState, (builder) => {
   });
   builder.addCase(actions.setPlayers, (state, action) => {
     state.players = action.payload;
+  });
+  builder.addCase(actions.addPatternsToPlayers, (state, action) => {
+    const patterns = action.payload;
+    state.players = state.players.map((player) => {
+      if (patterns[player.id]) {
+        return {
+          ...player,
+          pattern: patterns[player.id],
+        };
+      }
+      return player;
+    });
+  });
+  builder.addCase(actions.setPlayerPattern, (state, action) => {
+    const { player: playerId, pattern } = action.payload;
+    state.players = state.players.map((player) => {
+      if (player.id === playerId) {
+        return {
+          ...player,
+          pattern,
+        };
+      }
+      return player;
+    });
   });
 });
 

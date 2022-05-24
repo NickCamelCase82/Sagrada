@@ -23,6 +23,7 @@ export default function Registration() {
       </div>
     );
   };
+
   const registrationHandler = async (e) => {
     e.preventDefault();
 
@@ -36,7 +37,7 @@ export default function Registration() {
     });
     const fromBack = await toBack.json();
     dispatch({ type: 'SET_USER', payload: fromBack });
-    //dispatch({ type: 'CLEAR_DATA', payload: {} });
+    dispatch({ type: 'CLEAR_DATA', payload: {} });
     navigate('/', { fromBack });
   };
 

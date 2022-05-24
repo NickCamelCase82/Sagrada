@@ -6,6 +6,7 @@ import { registrationFormReducer } from './reducers/registrationReducer';
 import { loginFormReducer } from './reducers/loginReducer';
 import { userReducer } from './reducers/userReducer';
 import { lobbyReducer } from './reducers/lobby';
+import { lobbiesReducer } from './reducers/lobbies';
 
 const store = configureStore({
   reducer: combineReducers({
@@ -15,6 +16,7 @@ const store = configureStore({
     loginInputs: loginFormReducer,
     user: userReducer,
     lobby: lobbyReducer,
+    lobbies: lobbiesReducer,
   }),
 });
 

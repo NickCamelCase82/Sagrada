@@ -25,7 +25,7 @@ export default function Dice(props) {
   }
 
   switch (props.number) {
-    case 'one':
+    case 1:
       return (
         <>
           <div
@@ -40,7 +40,7 @@ export default function Dice(props) {
           </div>
         </>
       );
-    case 'two':
+    case 2:
       return (
         <>
           <div
@@ -56,7 +56,7 @@ export default function Dice(props) {
           </div>
         </>
       );
-    case 'three':
+    case 3:
       return (
         <>
           <div
@@ -73,7 +73,7 @@ export default function Dice(props) {
           </div>
         </>
       );
-    case 'four':
+    case 4:
       return (
         <>
           <div
@@ -95,7 +95,7 @@ export default function Dice(props) {
           </div>
         </>
       );
-    case 'five':
+    case 5:
       return (
         <>
           <div
@@ -120,7 +120,7 @@ export default function Dice(props) {
           </div>
         </>
       );
-    case 'six':
+    case 6:
       return (
         <>
           <div

@@ -7,9 +7,9 @@ class Rounds {
   //   this.gameRounds[gameId].rounds = [];
   // }
 
-  getRound(gameId) {
+  getRounds(gameId) {
     if (this.gameRounds[gameId]) {
-      return this.gameRounds[gameId].rounds.length + 1;
+      return this.gameRounds[gameId].rounds;
     }
     return null;
   }
@@ -24,6 +24,10 @@ class Rounds {
     } else {
       return null;
     }
+  }
+
+  getPlayers(gameId) {
+    return this.gameRounds[gameId].players;
   }
 
   removeFromReserve(gameId, cube) {
@@ -62,6 +66,10 @@ class Rounds {
     return this.gameRounds[gameId];
   }
 
+  getActivePlayer(gameId) {
+    return this.gameRounds[gameId].activePlayer;
+  }
+
   selectPatternsForPlayers(gameId) {
     const { players } = this.gameRounds[gameId];
     const patterns = Rounds.shuffleArray(PlayerPatterns);
@@ -76,10 +84,14 @@ class Rounds {
   }
 
   setPlayerSelectedPattern(gameId, playerId, patternId) {
+    console.log(gameId, playerId, patternId);
+    console.log('this.gameRounds', this.gameRounds);
     if (this.gameRounds[gameId]) {
+      console.log('kkjkjkjk');
       const player = this.gameRounds[gameId].players.find(
         (elem) => elem.id === playerId
       );
+      console.log('player', player);
       if (player) {
         this.gameRounds[gameId].players = this.gameRounds[gameId].players.map(
           (elem) => {
@@ -98,6 +110,7 @@ class Rounds {
 
   isAllPatternsSelected(gameId) {
     const { players } = this.gameRounds[gameId];
+    console.log('players', players);
     return players.every((player) => player.selectedPattern);
   }
 
@@ -161,8 +174,16 @@ class Rounds {
     }
   }
 
-  rollTheDice(gameId, numberPlayers) {
-    const numberOfCubesNeeded = Rounds.numberOfGivenCubes(numberPlayers);
+  getReserve(gameId) {
+    if (this.gameRounds[gameId]) {
+      return this.gameRounds[gameId].reserve;
+    }
+    return null;
+  }
+
+  rollTheDice(gameId) {
+    const playersCount = this.gameRounds[gameId].players.length;
+    const numberOfCubesNeeded = Rounds.numberOfGivenCubes(playersCount);
     const arrayAvailableCubes = this.giveArrayAvailableCubes(gameId);
     const cubes = [];
     console.log(numberOfCubesNeeded);
@@ -229,17 +250,28 @@ class Rounds {
 
   nextActivePlayer(gameId) {
     if (this.gameRounds[gameId].playersQueue.length > 0) {
-      const first = this.gameRounds[gameId].playersQueue[0][0];
-      this.gameRounds[gameId].playersQueue[0] =
-        this.gameRounds[gameId].playersQueue[0].slice(1);
       if (this.gameRounds[gameId].playersQueue[0].length === 0) {
+        this.nextRound(gameId);
         this.gameRounds[gameId].playersQueue =
           this.gameRounds[gameId].playersQueue.slice(1);
       }
+      const first = this.gameRounds[gameId].playersQueue[0][0];
+      this.gameRounds[gameId].playersQueue[0] =
+        this.gameRounds[gameId].playersQueue[0].slice(1);
+
       this.gameRounds[gameId].activePlayer = first;
       return first;
     }
     return null;
+  }
+
+  nextRound(gameId) {
+    const reserve = this.getReserve(gameId);
+    this.gameRounds[gameId].rounds = [
+      ...this.gameRounds[gameId].rounds,
+      reserve[0],
+    ];
+    this.rollTheDice(gameId);
   }
 }
 

@@ -10,20 +10,29 @@ import { setLobby } from '../../store/actions/lobby';
 const Main = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-  console.log(user.userLogin);
   const dispatch = useDispatch();
 
-  const onPlayClick = async () => {
-    const response = await axios.post(
-      'http://localhost:3001/game/lobby/create',
-      {},
-      {
-        withCredentials: true,
-      }
-    );
-    console.log(response);
-    dispatch(setLobby(response.data));
-    navigate('/lobby/' + response.data.id);
+  // const onPlayClick = async () => {
+  //   const response = await axios.post(
+  //     'http://localhost:3001/game/lobby/create',
+  //     {},
+  //     {
+  //       withCredentials: true,
+  //     }
+  //   );
+  //   console.log(response);
+  //   dispatch(setLobby(response.data));
+  //   navigate('/lobby/' + response.data.id);
+  // };
+
+  const handleLogout = async (event) => {
+    const toBack = await axios('http://localhost:3001/logout', {
+      withCredentials: true,
+    });
+
+    if (toBack.status === 200) {
+      dispatch({ type: 'SET_USER', payload: {} });
+    }
   };
 
   return (
@@ -33,18 +42,32 @@ const Main = () => {
         <Link to="/rules" type="button" className={classes.mainRulesLink}>
           Правила
         </Link>
-        <Link to="/login" type="button" className={classes.mainLoginLink}>
-          Логин
+        {user.login ? (
+          <div type="button" className={classes.mainLoginLink}>
+            Привет, {user.login}!
+          </div>
+        ) : (
+          <Link to="/login" type="button" className={classes.mainLoginLink}>
+            Логин
+          </Link>
+        )}
+        <Link
+          to="/"
+          type="button"
+          onClick={handleLogout}
+          className={classes.mainRegisterLink}
+        >
+          Выйти
         </Link>
-        <Link to="/register" type="button" className={classes.mainRegisterLink}>
-          Регистрация
-        </Link>
-        <div onClick={onPlayClick} className={classes.mainPlayLink}>
-          Играть
-        </div>
-        {/* <Link to="/lobby" type="button" className={classes.mainPlayLink}>
-          Играть
-        </Link> */}
+        {user.login ? (
+          <Link to="/lobbies" className={classes.mainPlayLink}>
+            Играть
+          </Link>
+        ) : (
+          <Link to="/login" className={classes.mainPlayLink}>
+            Играть
+          </Link>
+        )}
       </div>
     </div>
   );

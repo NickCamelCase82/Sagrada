@@ -17,8 +17,6 @@ export const setNumberPoints = createAction('user/number_points/set');
 export const setPrivilegeСhips = createAction('user/privilege_chips/set');
 // использовать нужное кол-во фишек привелегий
 export const usePrivilegeСhips = createAction('user/privilege_chips/use');
-// добавить кубик на витраж
-export const addCubeToStainedGlass = createAction('user/cube/add');
 
 // добавить витражи из которых игрок делает выбор
 export const setstainedGlassForChoice = createAction(
@@ -29,6 +27,8 @@ export const setstainedGlassForChoice = createAction(
 export const setRaisedCube = createAction('user/raised_cube/set');
 // удалить поднятый кубик
 export const resetRaisedCube = createAction('user/raised_cube/reset');
+
+export const setCurrentPlayerPattern = createAction('user/pattern/set');
 
 // экшен берет с бэка два объекта витража на выбор и диспачит в state
 // export const setstainedGlassForChoiceThunk =

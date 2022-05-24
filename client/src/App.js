@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login/Login';
+import Logout from './components/Logout/Logout';
 import Registration from './components/Registration/Registration';
 import ResetPassword from './components/ResetPassword/ResetPassword';
 import Game from './components/game/Game/Game';
@@ -10,6 +11,7 @@ import './App.css';
 import Players from './components/game/Players/Players';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import Lobbies from './components/Lobbies/Lobbies';
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -48,6 +50,7 @@ const App = () => {
       <Route path="login" element={<Login />} />
       <Route path="reset-password" element={<ResetPassword />} />
       <Route path="register" element={<Registration />} />
+      <Route path="lobbies" element={<Lobbies />} />
       <Route path="lobby" element={<Players />}>
         <Route path="/lobby/:id" element={<Players />} />
       </Route>
