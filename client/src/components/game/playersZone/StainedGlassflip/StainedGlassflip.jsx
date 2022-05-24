@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import './StainedGlassflip.css';
 
+
 const StainedGlassflip = ({ stainedGlass, onSelect }) => {
   console.log(stainedGlass);
+  const dispatch = useDispatch();
+  // console.log(stainedGlass);
+
   const [side, setSide] = useState(true);
 
   const handleTakeStainedGlass = async () => {

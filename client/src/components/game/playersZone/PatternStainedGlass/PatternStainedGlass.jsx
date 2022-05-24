@@ -7,6 +7,7 @@ import { StainedGlass } from '../../../../constans/constans';
 const PatternStainedGlass = () => {
   const currentStainedGlass = useSelector((state) => state.player.stainedGlass);
   const spacedСubes = useSelector((state) => state.player.spacedСubes);
+
   console.log('tyt', spacedСubes);
   const droppedCubes = useSelector((state) => state.game.droppedCubes);
   const playerStainedGlassId = useSelector(
@@ -20,6 +21,7 @@ const PatternStainedGlass = () => {
     playerStainedGlassId.slice(-1) === 'a'
       ? desiredStainedGlassId.pattern1.pattern
       : desiredStainedGlassId.pattern2.pattern;
+
   return (
     <div className="container-pattern-stained-glass">
       {desiredStainedGlassId.map((_, index) => (

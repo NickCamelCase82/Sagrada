@@ -58,7 +58,7 @@ const ChoiceStainedGlass = () => {
     // dispatch(setStainedGlass(objStainedGlass));
     // dispatch(addStainedGlass(objStainedGlass));
   };
-
+  
   return (
     <div className="container-choice-stained-glass">
       {patternSelection ? (
