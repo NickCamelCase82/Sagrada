@@ -23,7 +23,7 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, { cors: corsConfig });
 
-const PORT = process.env.PORT ?? 3002;
+const PORT = process.env.PORT ?? 3001;
 
 const sessionConfig = {
   store: new FileStore(),
@@ -32,10 +32,15 @@ const sessionConfig = {
   resave: false,
   saveUninitialized: false,
   cookie: {
-    maxAge: 1000 * 60 * 60,
+    maxAge: 1000 * 60 * 60 * 60,
     httpOnly: true,
   },
 };
+
+app.use((req, res, next) => {
+  req.io = io;
+  next();
+});
 
 app.use(session(sessionConfig));
 
@@ -48,9 +53,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', userRouter);
 
-dbCheck();
-``;
-app.use('/', userRouter);
+// dbCheck();
+
+// app.use('/', userRouter);
 app.use('/game', gameRouter);
 
 dbCheck();

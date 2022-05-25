@@ -1,4 +1,4 @@
-import { initState } from '../initState';
+import initState from './initState';
 
 export const registrationFormReducer = (state = initState, action) => {
   const { type, payload } = action;

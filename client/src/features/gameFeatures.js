@@ -29,3 +29,6 @@ export const randomPersonalGoal = (array) => {
 
   return array[personalGoal];
 };
+
+export const checkAvailableCells = () => {
+};

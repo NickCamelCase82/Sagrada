@@ -1,5 +1,7 @@
-export const initState = {
+const initState = {
   registrationInputs: {},
   loginInputs: {},
   user: {},
 };
+
+export default initState;

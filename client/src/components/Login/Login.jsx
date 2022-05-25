@@ -26,7 +26,7 @@ export default function Login() {
   const loginHandler = async (e) => {
     e.preventDefault();
 
-    const toBack = await fetch('http://localhost:3002/login', {
+    const toBack = await fetch('http://localhost:3001/login', {
       method: 'POST',
       credentials: 'include',
       headers: {

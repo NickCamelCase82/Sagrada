@@ -1,23 +1,45 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import classes from './Main.module.css';
 import img from '../../img/main-page/main.png';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
+
+// const Main = () => {
+//   const dispatch = useDispatch();
+//   const user = useSelector((state) => state.user);
+//   console.log(user.userLogin);
+// import axios from 'axios';
+// import { setLobby } from '../../store/actions/lobby';
 
 const Main = () => {
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector((state) => state.user);
-  console.log(user.userLogin);
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    fetch('http://localhost:3002/session', {
-      credentials: 'include',
-    })
-      .then((data) => data.json())
-      .then((user) => dispatch({ type: 'SET_USER', payload: user }));
-  }, []);
+  // const onPlayClick = async () => {
+  //   const response = await axios.post(
+  //     'http://localhost:3001/game/lobby/create',
+  //     {},
+  //     {
+  //       withCredentials: true,
+  //     }
+  //   );
+  //   console.log(response);
+  //   dispatch(setLobby(response.data));
+  //   navigate('/lobby/' + response.data.id);
+  // };
+
+  // const handleLogout = async (event) => {
+  //   const toBack = await axios('http://localhost:3001/logout', {
+  //     withCredentials: true,
+  //   });
+
+  //   if (toBack.status === 200) {
+  //     dispatch({ type: 'SET_USER', payload: {} });
+  //   }
+  // };
 
   const logoutHandler = async (e) => {
     const toBack = await fetch('http://localhost:3002/logout', {
