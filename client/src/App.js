@@ -14,34 +14,34 @@ import axios from 'axios';
 import Lobbies from './components/Lobbies/Lobbies';
 
 const App = () => {
-  const [loading, setLoading] = useState(true);
+  //const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
-  const getUser = async () => {
-    const response = await axios.get('http://localhost:3001/session', {
-      withCredentials: 'include',
-    });
+  // const getUser = async () => {
+  //   const response = await axios.get('http://localhost:3001/session', {
+  //     withCredentials: 'include',
+  //   });
 
-    if (response.data) {
-      dispatch({ type: 'SET_USER', payload: response.data });
-    }
-    setLoading(false);
-  };
+  //   if (response.data) {
+  //     dispatch({ type: 'SET_USER', payload: response.data });
+  //   }
+  //   setLoading(false);
+  // };
 
   useEffect(() => {
-    getUser();
-    // fetch('http://localhost:3001/session', {
-    //   credentials: 'include',
-    // })
-    //   .then((data) => data.json())
-    //   .then((user) => {
-    //     dispatch({ type: 'SET_USER', payload: user })
-    //   });
+    // getUser();
+    fetch('http://localhost:3001/session', {
+      credentials: 'include',
+    })
+      .then((data) => data.json())
+      .then((user) => {
+        dispatch({ type: 'SET_USER', payload: user });
+      });
   }, []);
 
-  if (loading) {
-    return <div>Loading</div>;
-  }
+  // if (loading) {
+  //   return <div>Loading</div>;
+  // }
 
   return (
     <Routes>

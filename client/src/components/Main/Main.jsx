@@ -42,7 +42,8 @@ const Main = () => {
   // };
 
   const logoutHandler = async (e) => {
-    const toBack = await fetch('http://localhost:3002/logout', {
+    e.preventDefault();
+    const toBack = await fetch('http://localhost:3001/logout', {
       method: 'GET',
       credentials: 'include',
     }).then((data) => {
